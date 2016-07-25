@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+@import Parse;
 
 @interface AppDelegate ()
 
@@ -17,7 +17,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    [Parse initializeWithConfiguration:[ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration>  _Nonnull configuration) {
+        configuration.applicationId =@"appId";
+        configuration.clientKey = @"myMasterKey";
+        configuration.server =@"https://location-reminders-server-rs.herokuapp.com/parse";
+        
+    }]];
+    
     return YES;
 }
 
