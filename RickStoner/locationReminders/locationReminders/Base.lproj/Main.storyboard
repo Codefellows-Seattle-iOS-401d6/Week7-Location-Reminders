@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A254g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VDn-df-8Qt">
+                                <rect key="frame" x="20" y="20" width="560" height="480"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0d0-Wb-m9u">
+                                <rect key="frame" x="264" y="525" width="72" height="30"/>
+                                <state key="normal" title="Location 2"/>
+                                <connections>
+                                    <action selector="locationTwoButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Gq-OO-a32"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9k-lz-PIy">
+                                <rect key="frame" x="386" y="525" width="72" height="30"/>
+                                <state key="normal" title="Location 3"/>
+                                <connections>
+                                    <action selector="locationThreeButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tjD-gO-gEM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOF-JL-35e">
+                                <rect key="frame" x="144" y="525" width="70" height="30"/>
+                                <state key="normal" title="Location 1"/>
+                                <connections>
+                                    <action selector="locationOneButtonSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fFh-LO-WAw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VDn-df-8Qt" secondAttribute="trailing" constant="20" id="6DV-ce-X61"/>
+                            <constraint firstItem="x9k-lz-PIy" firstAttribute="leading" secondItem="0d0-Wb-m9u" secondAttribute="trailing" constant="50" id="Ivq-0d-YuP"/>
+                            <constraint firstItem="0d0-Wb-m9u" firstAttribute="leading" secondItem="BOF-JL-35e" secondAttribute="trailing" constant="50" id="PCL-pm-03u"/>
+                            <constraint firstItem="VDn-df-8Qt" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="Y3A-ds-zJa"/>
+                            <constraint firstItem="0d0-Wb-m9u" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cvR-KW-aay"/>
+                            <constraint firstItem="VDn-df-8Qt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="j1y-PA-gQ3"/>
+                            <constraint firstItem="0d0-Wb-m9u" firstAttribute="top" secondItem="VDn-df-8Qt" secondAttribute="bottom" constant="25" id="ktR-mY-qom"/>
+                            <constraint firstItem="VDn-df-8Qt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="pmW-y7-I9K"/>
+                            <constraint firstItem="x9k-lz-PIy" firstAttribute="baseline" secondItem="0d0-Wb-m9u" secondAttribute="baseline" id="rjp-YL-aMY"/>
+                            <constraint firstItem="BOF-JL-35e" firstAttribute="baseline" secondItem="0d0-Wb-m9u" secondAttribute="baseline" id="w0A-C2-O1H"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="VDn-df-8Qt" id="ECO-CK-Ffe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340" y="387"/>
+        </scene>
+    </scenes>
+</document>
