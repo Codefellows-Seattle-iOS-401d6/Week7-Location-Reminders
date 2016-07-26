@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import "LocationController.h"
 #import "DetailedViewController.h"
+#import "RandomColor.h"
 
 
 @interface ViewController () <MKMapViewDelegate, LocationControllerDelegate>
@@ -116,6 +117,7 @@
     annotationView.canShowCallout = YES;
     UIButton *rightCalloutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     annotationView.rightCalloutAccessoryView = rightCalloutButton;
+    annotationView.pinTintColor = [RandomColor pinTintColor];
     
     return annotationView;
 }
