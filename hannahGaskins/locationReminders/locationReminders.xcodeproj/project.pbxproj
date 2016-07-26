@@ -18,6 +18,7 @@
 		EEF6F74F1D46BDCF00648043 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEF6F74D1D46BDCF00648043 /* Parse.framework */; };
 		EEF6F7501D46BDD800648043 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEF6F74C1D46BDCF00648043 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EEF6F7511D46BDD800648043 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEF6F74D1D46BDCF00648043 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EEF6F7651D4712A800648043 /* NSMutableArray+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6F7641D4712A800648043 /* NSMutableArray+Additions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +49,8 @@
 		EEF6F7431D4694E800648043 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		EEF6F74C1D46BDCF00648043 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		EEF6F74D1D46BDCF00648043 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
+		EEF6F7631D4712A800648043 /* NSMutableArray+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Additions.h"; sourceTree = "<group>"; };
+		EEF6F7641D4712A800648043 /* NSMutableArray+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Additions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 				EEF6F7381D46823F00648043 /* Assets.xcassets */,
 				EEF6F73A1D46823F00648043 /* LaunchScreen.storyboard */,
 				EEF6F73D1D46823F00648043 /* Info.plist */,
+				EEF6F75F1D4711D900648043 /* Code Challenges */,
 				EEF6F72C1D46823F00648043 /* Supporting Files */,
 			);
 			path = locationReminders;
@@ -105,6 +109,16 @@
 				EEF6F72D1D46823F00648043 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEF6F75F1D4711D900648043 /* Code Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				EEF6F7631D4712A800648043 /* NSMutableArray+Additions.h */,
+				EEF6F7641D4712A800648043 /* NSMutableArray+Additions.m */,
+			);
+			name = "Code Challenges";
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEF6F7341D46823F00648043 /* ViewController.m in Sources */,
+				EEF6F7651D4712A800648043 /* NSMutableArray+Additions.m in Sources */,
 				EEF6F7311D46823F00648043 /* AppDelegate.m in Sources */,
 				EEF6F72E1D46823F00648043 /* main.m in Sources */,
 			);
@@ -342,6 +357,7 @@
 				EEF6F7421D46823F00648043 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

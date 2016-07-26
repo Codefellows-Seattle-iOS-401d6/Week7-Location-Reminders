@@ -8,11 +8,14 @@
 
 #import "ViewController.h"
 #import <Parse/Parse.h>
+#import "NSMutableArray+Additions.h"
 @import MapKit;
 
 @interface ViewController ()
 
 @property(strong, nonatomic) CLLocationManager *locationManager;
+@property(strong, nonatomic) NSMutableArray *stack;
+@property(strong, nonatomic) NSMutableArray *queue;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction)firstLocationButtonPressed:(id)sender;
@@ -26,6 +29,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // tesing stack and queue
+    self.stack = [[NSMutableArray alloc]init];
+    self.queue = [[NSMutableArray alloc]init];
+    NSNumber *one = [NSNumber numberWithInt:1];
+    NSNumber *two = [NSNumber numberWithInt:2];
+    NSNumber *three = [NSNumber numberWithInt:3];
+
+    [self.stack push: one];
+    [self.queue push: one];
+    [self.stack push: two];
+    [self.queue push: two];
+    [self.stack push: three];
+    [self.queue push: three];
+    
+    [self.stack popStack];
+    [self.queue popQ];
+    
+    NSLog(@"stack: %@", self.stack);
+    NSLog(@"queue: %@", self.queue);
     
 //    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
 //    testObject[@"foo"] = @"bar";
