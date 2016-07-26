@@ -14,6 +14,8 @@
 		044B80AD1D46825D007BB676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044B80AC1D46825D007BB676 /* Assets.xcassets */; };
 		044B80B01D46825D007BB676 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044B80AE1D46825D007BB676 /* LaunchScreen.storyboard */; };
 		044B80B81D46AA0D007BB676 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044B80B71D46AA0D007BB676 /* MapKit.framework */; };
+		044FA59C1D47F33100F127BC /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044FA59B1D47F33100F127BC /* LocationController.m */; };
+		044FA5A21D47F6AF00F127BC /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044FA5A11D47F6AF00F127BC /* DetailedViewController.m */; };
 		049E0CFB1D46BBE600C827F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049E0CFA1D46BBE600C827F0 /* Bolts.framework */; };
 		049E0CFD1D46BBF100C827F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049E0CFC1D46BBF100C827F0 /* Parse.framework */; };
 		049E0CFE1D46BBFF00C827F0 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 049E0CFC1D46BBF100C827F0 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -46,6 +48,10 @@
 		044B80AF1D46825D007BB676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		044B80B11D46825D007BB676 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		044B80B71D46AA0D007BB676 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		044FA59A1D47F33100F127BC /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		044FA59B1D47F33100F127BC /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		044FA5A01D47F6AF00F127BC /* DetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailedViewController.h; sourceTree = "<group>"; };
+		044FA5A11D47F6AF00F127BC /* DetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailedViewController.m; sourceTree = "<group>"; };
 		049E0CFA1D46BBE600C827F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		049E0CFC1D46BBF100C827F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,11 +94,9 @@
 			children = (
 				044B80A31D46825D007BB676 /* AppDelegate.h */,
 				044B80A41D46825D007BB676 /* AppDelegate.m */,
-				044B80A61D46825D007BB676 /* ViewController.h */,
-				044B80A71D46825D007BB676 /* ViewController.m */,
-				044B80A91D46825D007BB676 /* Main.storyboard */,
-				044B80AC1D46825D007BB676 /* Assets.xcassets */,
-				044B80AE1D46825D007BB676 /* LaunchScreen.storyboard */,
+				044FA59F1D47F35B00F127BC /* Model */,
+				044FA59E1D47F35100F127BC /* View */,
+				044FA59D1D47F34100F127BC /* Controller */,
 				044B80B11D46825D007BB676 /* Info.plist */,
 				044B80A01D46825D007BB676 /* Supporting Files */,
 			);
@@ -105,6 +109,36 @@
 				044B80A11D46825D007BB676 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		044FA59D1D47F34100F127BC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				044FA5A01D47F6AF00F127BC /* DetailedViewController.h */,
+				044FA5A11D47F6AF00F127BC /* DetailedViewController.m */,
+				044B80A61D46825D007BB676 /* ViewController.h */,
+				044B80A71D46825D007BB676 /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		044FA59E1D47F35100F127BC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				044B80A91D46825D007BB676 /* Main.storyboard */,
+				044B80AC1D46825D007BB676 /* Assets.xcassets */,
+				044B80AE1D46825D007BB676 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		044FA59F1D47F35B00F127BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				044FA59A1D47F33100F127BC /* LocationController.h */,
+				044FA59B1D47F33100F127BC /* LocationController.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044FA59C1D47F33100F127BC /* LocationController.m in Sources */,
 				044B80A81D46825D007BB676 /* ViewController.m in Sources */,
 				044B80A51D46825D007BB676 /* AppDelegate.m in Sources */,
 				044B80A21D46825D007BB676 /* main.m in Sources */,
+				044FA5A21D47F6AF00F127BC /* DetailedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
