@@ -18,6 +18,9 @@
 		D9D488851D4686AA00626A34 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9D488801D46864E00626A34 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9D488861D4686AA00626A34 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9D488811D46864E00626A34 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9D488881D4694EB00626A34 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D488871D4694EB00626A34 /* MapKit.framework */; };
+		D9D4888B1D47CDFA00626A34 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4888A1D47CDFA00626A34 /* LocationController.m */; };
+		D9D4888E1D47E02800626A34 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4888D1D47E02800626A34 /* DetailViewController.m */; };
+		D9D488901D48166000626A34 /* CodeChallenge.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4888F1D48166000626A34 /* CodeChallenge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +51,11 @@
 		D9D488801D46864E00626A34 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		D9D488811D46864E00626A34 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 		D9D488871D4694EB00626A34 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D9D488891D47CDFA00626A34 /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		D9D4888A1D47CDFA00626A34 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		D9D4888C1D47E02800626A34 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		D9D4888D1D47E02800626A34 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		D9D4888F1D48166000626A34 /* CodeChallenge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeChallenge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +98,12 @@
 				D9D4886D1D46826800626A34 /* AppDelegate.m */,
 				D9D4886F1D46826800626A34 /* ViewController.h */,
 				D9D488701D46826800626A34 /* ViewController.m */,
+				D9D4888F1D48166000626A34 /* CodeChallenge.m */,
 				D9D488721D46826800626A34 /* Main.storyboard */,
+				D9D4888C1D47E02800626A34 /* DetailViewController.h */,
+				D9D4888D1D47E02800626A34 /* DetailViewController.m */,
+				D9D488891D47CDFA00626A34 /* LocationController.h */,
+				D9D4888A1D47CDFA00626A34 /* LocationController.m */,
 				D9D488751D46826800626A34 /* Assets.xcassets */,
 				D9D488771D46826800626A34 /* LaunchScreen.storyboard */,
 				D9D4887A1D46826800626A34 /* Info.plist */,
@@ -183,6 +196,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9D4888E1D47E02800626A34 /* DetailViewController.m in Sources */,
+				D9D4888B1D47CDFA00626A34 /* LocationController.m in Sources */,
+				D9D488901D48166000626A34 /* CodeChallenge.m in Sources */,
 				D9D488711D46826800626A34 /* ViewController.m in Sources */,
 				D9D4886E1D46826800626A34 /* AppDelegate.m in Sources */,
 				D9D4886B1D46826800626A34 /* main.m in Sources */,
@@ -344,6 +360,7 @@
 				D9D4887F1D46826800626A34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
