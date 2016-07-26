@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 @import MapKit;
-@import Parse;
+#import <Parse/Parse.h>
+
 
 @interface ViewController ()
 
@@ -27,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self requestPermissions];
-    [self saveToParse];
+    [self parseQuery];
     self.mapView.mapType = MKMapTypeSatellite;
     [self.mapView setMapType: self.mapView.mapType];
     [self.mapView.layer setCornerRadius:20.0];
@@ -42,6 +43,17 @@
 - (void)requestPermissions{
     [self setLocationManager:[[CLLocationManager alloc]init]];
     [self.locationManager requestAlwaysAuthorization];
+}
+
+- (void)parseQuery {
+    PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                NSLog(@"Objects: %@", objects);
+            }];
+        }
+    }];
 }
 
 - (void)saveToParse{
