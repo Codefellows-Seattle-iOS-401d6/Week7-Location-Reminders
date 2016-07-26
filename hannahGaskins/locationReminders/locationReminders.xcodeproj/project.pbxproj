@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EEC90A3C1D47CE0400ED0292 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC90A3B1D47CE0400ED0292 /* LocationController.m */; };
+		EEC90A411D47E03F00ED0292 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC90A401D47E03F00ED0292 /* DetailViewController.m */; };
+		EEC90A451D480DC500ED0292 /* MKMapView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC90A441D480DC500ED0292 /* MKMapView+Additions.m */; };
 		EEF6F72E1D46823F00648043 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6F72D1D46823F00648043 /* main.m */; };
 		EEF6F7311D46823F00648043 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6F7301D46823F00648043 /* AppDelegate.m */; };
 		EEF6F7341D46823F00648043 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6F7331D46823F00648043 /* ViewController.m */; };
@@ -36,6 +39,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EEC90A3A1D47CE0400ED0292 /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		EEC90A3B1D47CE0400ED0292 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		EEC90A3F1D47E03F00ED0292 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		EEC90A401D47E03F00ED0292 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		EEC90A431D480DC500ED0292 /* MKMapView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Additions.h"; sourceTree = "<group>"; };
+		EEC90A441D480DC500ED0292 /* MKMapView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Additions.m"; sourceTree = "<group>"; };
 		EEF6F7291D46823F00648043 /* locationReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = locationReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF6F72D1D46823F00648043 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EEF6F72F1D46823F00648043 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +76,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EEC90A3D1D47CE0A00ED0292 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EEC90A3F1D47E03F00ED0292 /* DetailViewController.h */,
+				EEC90A401D47E03F00ED0292 /* DetailViewController.m */,
+				EEC90A3A1D47CE0400ED0292 /* LocationController.h */,
+				EEC90A3B1D47CE0400ED0292 /* LocationController.m */,
+				EEF6F7321D46823F00648043 /* ViewController.h */,
+				EEF6F7331D46823F00648043 /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		EEC90A3E1D47CF0500ED0292 /* AppGlobal */ = {
+			isa = PBXGroup;
+			children = (
+				EEF6F7381D46823F00648043 /* Assets.xcassets */,
+				EEF6F72F1D46823F00648043 /* AppDelegate.h */,
+				EEF6F7301D46823F00648043 /* AppDelegate.m */,
+				EEC90A431D480DC500ED0292 /* MKMapView+Additions.h */,
+				EEC90A441D480DC500ED0292 /* MKMapView+Additions.m */,
+			);
+			name = AppGlobal;
+			sourceTree = "<group>";
+		};
+		EEC90A421D47E04E00ED0292 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EEF6F73A1D46823F00648043 /* LaunchScreen.storyboard */,
+				EEF6F7351D46823F00648043 /* Main.storyboard */,
+				EEF6F73D1D46823F00648043 /* Info.plist */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		EEF6F7201D46823F00648043 = {
 			isa = PBXGroup;
 			children = (
@@ -89,14 +133,9 @@
 		EEF6F72B1D46823F00648043 /* locationReminders */ = {
 			isa = PBXGroup;
 			children = (
-				EEF6F72F1D46823F00648043 /* AppDelegate.h */,
-				EEF6F7301D46823F00648043 /* AppDelegate.m */,
-				EEF6F7321D46823F00648043 /* ViewController.h */,
-				EEF6F7331D46823F00648043 /* ViewController.m */,
-				EEF6F7351D46823F00648043 /* Main.storyboard */,
-				EEF6F7381D46823F00648043 /* Assets.xcassets */,
-				EEF6F73A1D46823F00648043 /* LaunchScreen.storyboard */,
-				EEF6F73D1D46823F00648043 /* Info.plist */,
+				EEC90A3E1D47CF0500ED0292 /* AppGlobal */,
+				EEC90A3D1D47CE0A00ED0292 /* Controller */,
+				EEC90A421D47E04E00ED0292 /* View */,
 				EEF6F75F1D4711D900648043 /* Code Challenges */,
 				EEF6F72C1D46823F00648043 /* Supporting Files */,
 			);
@@ -197,10 +236,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEC90A451D480DC500ED0292 /* MKMapView+Additions.m in Sources */,
+				EEC90A3C1D47CE0400ED0292 /* LocationController.m in Sources */,
 				EEF6F7341D46823F00648043 /* ViewController.m in Sources */,
 				EEF6F7651D4712A800648043 /* NSMutableArray+Additions.m in Sources */,
 				EEF6F7311D46823F00648043 /* AppDelegate.m in Sources */,
 				EEF6F72E1D46823F00648043 /* main.m in Sources */,
+				EEC90A411D47E03F00ED0292 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

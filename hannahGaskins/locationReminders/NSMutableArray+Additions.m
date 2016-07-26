@@ -36,6 +36,24 @@
     [self addObject:obj];
 }
 
-
+//// tesing stack and queue drop in viewDidLoad
+//self.stack = [[NSMutableArray alloc]init];
+//self.queue = [[NSMutableArray alloc]init];
+//NSNumber *one = [NSNumber numberWithInt:1];
+//NSNumber *two = [NSNumber numberWithInt:2];
+//NSNumber *three = [NSNumber numberWithInt:3];
+//
+//[self.stack push: one];
+//[self.queue push: one];
+//[self.stack push: two];
+//[self.queue push: two];
+//[self.stack push: three];
+//[self.queue push: three];
+//
+//[self.stack popStack];
+//[self.queue popQ];
+//
+//NSLog(@"stack: %@", self.stack);
+//NSLog(@"queue: %@", self.queue);
 
 @end
