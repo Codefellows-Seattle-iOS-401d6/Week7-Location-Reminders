@@ -21,6 +21,9 @@
 		1435BBA31D46B82C006982A1 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1435BB9D1D46B7E5006982A1 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1435BBA71D46C07F006982A1 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1435BBA61D46C07F006982A1 /* Queue.m */; };
 		1435BBAA1D46CF8A006982A1 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 1435BBA91D46CF8A006982A1 /* Stack.m */; };
+		1435BBAE1D47CDF6006982A1 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1435BBAD1D47CDF6006982A1 /* LocationController.m */; };
+		1435BBB11D47E024006982A1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1435BBB01D47E024006982A1 /* DetailViewController.m */; };
+		1435BBB41D481926006982A1 /* AnagramDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1435BBB31D481926006982A1 /* AnagramDetector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +59,12 @@
 		1435BBA61D46C07F006982A1 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
 		1435BBA81D46CF8A006982A1 /* Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
 		1435BBA91D46CF8A006982A1 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
+		1435BBAC1D47CDF6006982A1 /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		1435BBAD1D47CDF6006982A1 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		1435BBAF1D47E024006982A1 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		1435BBB01D47E024006982A1 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		1435BBB21D481926006982A1 /* AnagramDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnagramDetector.h; sourceTree = "<group>"; };
+		1435BBB31D481926006982A1 /* AnagramDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnagramDetector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +133,10 @@
 			children = (
 				1435BB831D468257006982A1 /* ViewController.h */,
 				1435BB841D468257006982A1 /* ViewController.m */,
+				1435BBAC1D47CDF6006982A1 /* LocationController.h */,
+				1435BBAD1D47CDF6006982A1 /* LocationController.m */,
+				1435BBAF1D47E024006982A1 /* DetailViewController.h */,
+				1435BBB01D47E024006982A1 /* DetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -142,10 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				1435BB891D468257006982A1 /* locationReminders.xcdatamodeld */,
-				1435BBA51D46C07F006982A1 /* Queue.h */,
-				1435BBA61D46C07F006982A1 /* Queue.m */,
-				1435BBA81D46CF8A006982A1 /* Stack.h */,
-				1435BBA91D46CF8A006982A1 /* Stack.m */,
+				1435BBAB1D47CD6E006982A1 /* Code Challenge 1 */,
+				1435BBB51D48192A006982A1 /* Code Challenge 2 */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -159,6 +170,26 @@
 			);
 			name = Frameworks;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		1435BBAB1D47CD6E006982A1 /* Code Challenge 1 */ = {
+			isa = PBXGroup;
+			children = (
+				1435BBA51D46C07F006982A1 /* Queue.h */,
+				1435BBA61D46C07F006982A1 /* Queue.m */,
+				1435BBA81D46CF8A006982A1 /* Stack.h */,
+				1435BBA91D46CF8A006982A1 /* Stack.m */,
+			);
+			name = "Code Challenge 1";
+			sourceTree = "<group>";
+		};
+		1435BBB51D48192A006982A1 /* Code Challenge 2 */ = {
+			isa = PBXGroup;
+			children = (
+				1435BBB21D481926006982A1 /* AnagramDetector.h */,
+				1435BBB31D481926006982A1 /* AnagramDetector.m */,
+			);
+			name = "Code Challenge 2";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,9 +271,12 @@
 				1435BBAA1D46CF8A006982A1 /* Stack.m in Sources */,
 				1435BBA71D46C07F006982A1 /* Queue.m in Sources */,
 				1435BB8B1D468257006982A1 /* locationReminders.xcdatamodeld in Sources */,
+				1435BBB11D47E024006982A1 /* DetailViewController.m in Sources */,
 				1435BB851D468257006982A1 /* ViewController.m in Sources */,
 				1435BB821D468257006982A1 /* AppDelegate.m in Sources */,
+				1435BBAE1D47CDF6006982A1 /* LocationController.m in Sources */,
 				1435BB7F1D468257006982A1 /* main.m in Sources */,
+				1435BBB41D481926006982A1 /* AnagramDetector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
