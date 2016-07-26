@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8B3178821D47A0D7009CB791 /* Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3178811D47A0D7009CB791 /* Stack.m */; };
 		8B3178851D47A0DE009CB791 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3178841D47A0DE009CB791 /* Queue.m */; };
+		8B3178881D47CDF0009CB791 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3178871D47CDF0009CB791 /* LocationController.m */; };
+		8B31788E1D47E033009CB791 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B31788D1D47E033009CB791 /* DetailViewController.m */; };
+		8B3178911D481135009CB791 /* Anagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3178901D481135009CB791 /* Anagram.m */; };
 		8B803A8F1D4683210069BE3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B803A8E1D4683210069BE3F /* main.m */; };
 		8B803A921D4683210069BE3F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B803A911D4683210069BE3F /* AppDelegate.m */; };
 		8B803A951D4683210069BE3F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B803A941D4683210069BE3F /* ViewController.m */; };
@@ -41,6 +44,12 @@
 		8B3178811D47A0D7009CB791 /* Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stack.m; sourceTree = "<group>"; };
 		8B3178831D47A0DE009CB791 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		8B3178841D47A0DE009CB791 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
+		8B3178861D47CDF0009CB791 /* LocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationController.h; sourceTree = "<group>"; };
+		8B3178871D47CDF0009CB791 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationController.m; sourceTree = "<group>"; };
+		8B31788C1D47E033009CB791 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		8B31788D1D47E033009CB791 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		8B31788F1D481135009CB791 /* Anagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anagram.h; sourceTree = "<group>"; };
+		8B3178901D481135009CB791 /* Anagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anagram.m; sourceTree = "<group>"; };
 		8B803A8A1D4683210069BE3F /* locationReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = locationReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B803A8E1D4683210069BE3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B803A901D4683210069BE3F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,6 +79,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B3178891D47CDF5009CB791 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B803A961D4683210069BE3F /* Main.storyboard */,
+				8B803A991D4683210069BE3F /* Assets.xcassets */,
+				8B803A9B1D4683210069BE3F /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8B31788A1D47CDF9009CB791 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8B31788B1D47CE04009CB791 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B3178861D47CDF0009CB791 /* LocationController.h */,
+				8B3178871D47CDF0009CB791 /* LocationController.m */,
+				8B803A931D4683210069BE3F /* ViewController.h */,
+				8B803A941D4683210069BE3F /* ViewController.m */,
+				8B31788C1D47E033009CB791 /* DetailViewController.h */,
+				8B31788D1D47E033009CB791 /* DetailViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		8B803A811D4683210069BE3F = {
 			isa = PBXGroup;
 			children = (
@@ -92,18 +131,9 @@
 		8B803A8C1D4683210069BE3F /* locationReminder */ = {
 			isa = PBXGroup;
 			children = (
-				8B803A901D4683210069BE3F /* AppDelegate.h */,
-				8B803A911D4683210069BE3F /* AppDelegate.m */,
-				8B803A931D4683210069BE3F /* ViewController.h */,
-				8B803A941D4683210069BE3F /* ViewController.m */,
-				8B3178801D47A0D7009CB791 /* Stack.h */,
-				8B3178811D47A0D7009CB791 /* Stack.m */,
-				8B3178831D47A0DE009CB791 /* Queue.h */,
-				8B3178841D47A0DE009CB791 /* Queue.m */,
-				8B803A961D4683210069BE3F /* Main.storyboard */,
-				8B803A991D4683210069BE3F /* Assets.xcassets */,
-				8B803A9B1D4683210069BE3F /* LaunchScreen.storyboard */,
-				8B803A9E1D4683210069BE3F /* Info.plist */,
+				8B31788B1D47CE04009CB791 /* Controller */,
+				8B31788A1D47CDF9009CB791 /* Model */,
+				8B3178891D47CDF5009CB791 /* View */,
 				8B803A8D1D4683210069BE3F /* Supporting Files */,
 			);
 			path = locationReminder;
@@ -112,7 +142,16 @@
 		8B803A8D1D4683210069BE3F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B803A901D4683210069BE3F /* AppDelegate.h */,
+				8B803A911D4683210069BE3F /* AppDelegate.m */,
+				8B3178801D47A0D7009CB791 /* Stack.h */,
+				8B3178811D47A0D7009CB791 /* Stack.m */,
+				8B3178831D47A0DE009CB791 /* Queue.h */,
+				8B3178841D47A0DE009CB791 /* Queue.m */,
+				8B803A9E1D4683210069BE3F /* Info.plist */,
 				8B803A8E1D4683210069BE3F /* main.m */,
+				8B31788F1D481135009CB791 /* Anagram.h */,
+				8B3178901D481135009CB791 /* Anagram.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -195,9 +234,12 @@
 			files = (
 				8B803A951D4683210069BE3F /* ViewController.m in Sources */,
 				8B803A921D4683210069BE3F /* AppDelegate.m in Sources */,
+				8B3178881D47CDF0009CB791 /* LocationController.m in Sources */,
+				8B3178911D481135009CB791 /* Anagram.m in Sources */,
 				8B3178851D47A0DE009CB791 /* Queue.m in Sources */,
 				8B3178821D47A0D7009CB791 /* Stack.m in Sources */,
 				8B803A8F1D4683210069BE3F /* main.m in Sources */,
+				8B31788E1D47E033009CB791 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
