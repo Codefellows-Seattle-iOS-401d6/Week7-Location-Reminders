@@ -88,7 +88,25 @@
                     <view key="view" contentMode="scaleToFill" id="H2m-j6-yYZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XeV-uo-Qga">
+                                <rect key="frame" x="0.0" y="509" width="600" height="91"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="lHQ-Kt-erh"/>
+                                </constraints>
+                                <state key="normal" title="Creat Reminders"/>
+                                <connections>
+                                    <action selector="createReminderButtonSelected:" destination="Wzm-Sc-Nt2" eventType="touchUpInside" id="gnk-XF-G7N"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iI7-aZ-MK1" firstAttribute="top" secondItem="XeV-uo-Qga" secondAttribute="bottom" id="7Gk-1H-lyC"/>
+                            <constraint firstItem="XeV-uo-Qga" firstAttribute="leading" secondItem="H2m-j6-yYZ" secondAttribute="leading" id="BR0-vc-ANi"/>
+                            <constraint firstAttribute="trailing" secondItem="XeV-uo-Qga" secondAttribute="trailing" id="ZhC-z6-tyT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hys-2d-0aM" userLabel="First Responder" sceneMemberID="firstResponder"/>
