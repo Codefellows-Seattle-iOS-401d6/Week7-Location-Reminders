@@ -21,6 +21,8 @@
 		D9D4888B1D47CDFA00626A34 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4888A1D47CDFA00626A34 /* LocationController.m */; };
 		D9D4888E1D47E02800626A34 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4888D1D47E02800626A34 /* DetailViewController.m */; };
 		D9D488901D48166000626A34 /* CodeChallenge.m in Sources */ = {isa = PBXBuildFile; fileRef = D9D4888F1D48166000626A34 /* CodeChallenge.m */; };
+		D9D488921D492B7600626A34 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D488911D492B7600626A34 /* ParseUI.framework */; };
+		D9D488931D492C4700626A34 /* ParseUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D9D488911D492B7600626A34 /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +32,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D9D488931D492C4700626A34 /* ParseUI.framework in CopyFiles */,
 				D9D488851D4686AA00626A34 /* Bolts.framework in CopyFiles */,
 				D9D488861D4686AA00626A34 /* Parse.framework in CopyFiles */,
 			);
@@ -56,6 +59,7 @@
 		D9D4888C1D47E02800626A34 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		D9D4888D1D47E02800626A34 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		D9D4888F1D48166000626A34 /* CodeChallenge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeChallenge.m; sourceTree = "<group>"; };
+		D9D488911D492B7600626A34 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 			files = (
 				D9D488821D46864E00626A34 /* Bolts.framework in Frameworks */,
 				D9D488881D4694EB00626A34 /* MapKit.framework in Frameworks */,
+				D9D488921D492B7600626A34 /* ParseUI.framework in Frameworks */,
 				D9D488831D46864E00626A34 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +83,7 @@
 				D9D488871D4694EB00626A34 /* MapKit.framework */,
 				D9D488801D46864E00626A34 /* Bolts.framework */,
 				D9D488811D46864E00626A34 /* Parse.framework */,
+				D9D488911D492B7600626A34 /* ParseUI.framework */,
 				D9D488681D46826800626A34 /* locationReminders */,
 				D9D488671D46826800626A34 /* Products */,
 			);
@@ -318,6 +324,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = locationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -333,6 +340,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = locationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -32,7 +32,7 @@
     [self.mapView.layer setCornerRadius:20.0];
     [self.mapView setDelegate:self];
 //    [self.mapView showsUserLocation:YES];
-    
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(testObserverFired) name:@"TestNotification" object:nil];
     
     
     
@@ -77,6 +77,20 @@
     
     [[LocationController sharedController]setDelegate:self];
     [[[LocationController sharedController]locationManager]startUpdatingLocation];
+    
+   
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver: self name:@"TestNotification" object:nil];
+    
+}
+
+-(void)testObserverFired
+{
+    NSLog(@"Notification Fired");
+
 }
 
 - (IBAction)firstLocationButtonPressed:(id)sender
