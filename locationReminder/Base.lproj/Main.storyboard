@@ -68,7 +68,7 @@
                     <navigationItem key="navigationItem" id="mTK-0B-lR6"/>
                     <connections>
                         <outlet property="mapView" destination="4CG-Mo-AnL" id="CgQ-55-fKD"/>
-                        <segue destination="wgR-l0-0bb" kind="show" identifier="" customClass="DetailViewController" id="7rs-8e-1Be"/>
+                        <segue destination="wgR-l0-0bb" kind="show" identifier="DetailViewController" id="7rs-8e-1Be"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -91,8 +91,39 @@
                     <view key="view" contentMode="scaleToFill" id="5M8-ec-Or6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOR-Mv-pk6">
+                                <rect key="frame" x="261" y="285" width="115" height="30"/>
+                                <state key="normal" title="Create Reminder"/>
+                                <connections>
+                                    <action selector="createReminderButtonSelected:" destination="wgR-l0-0bb" eventType="touchUpInside" id="oxt-vG-0ti"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Please enter a reminder" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0pF-Sy-IRw">
+                                <rect key="frame" x="270" y="355" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Radius" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B1g-q2-4mn">
+                                <rect key="frame" x="270" y="430" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="B1g-q2-4mn" firstAttribute="centerX" secondItem="5M8-ec-Or6" secondAttribute="centerX" id="0bz-hm-kh9"/>
+                            <constraint firstItem="hOR-Mv-pk6" firstAttribute="centerX" secondItem="5M8-ec-Or6" secondAttribute="centerX" id="7IH-uO-OfF"/>
+                            <constraint firstItem="B1g-q2-4mn" firstAttribute="top" secondItem="0pF-Sy-IRw" secondAttribute="bottom" constant="45" id="NJ4-kw-tmG"/>
+                            <constraint firstItem="0pF-Sy-IRw" firstAttribute="top" secondItem="hOR-Mv-pk6" secondAttribute="bottom" constant="40" id="gB5-NI-5qC"/>
+                            <constraint firstItem="0pF-Sy-IRw" firstAttribute="centerX" secondItem="5M8-ec-Or6" secondAttribute="centerX" id="iIw-aG-6D9"/>
+                            <constraint firstItem="hOR-Mv-pk6" firstAttribute="centerY" secondItem="5M8-ec-Or6" secondAttribute="centerY" id="kJh-oO-keT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="radiusText" destination="B1g-q2-4mn" id="qkp-R9-Nxg"/>
+                        <outlet property="reminderText" destination="0pF-Sy-IRw" id="Fgl-FM-O76"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mOH-z4-zdZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

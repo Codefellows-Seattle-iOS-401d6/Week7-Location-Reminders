@@ -7,9 +7,13 @@
 //
 
 #import "DetailViewController.h"
+#import "Reminder.h"
 
 @interface DetailViewController ()
 
+- (IBAction)createReminderButtonSelected:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UITextField *reminderText;
+@property (weak, nonatomic) IBOutlet UITextField *radiusText;
 @end
 
 @implementation DetailViewController
@@ -20,6 +24,7 @@
     NSLog(@"TITLE: %@", self.annotationTitle);
     NSLog(@"COORDINATE: %f, %f", self.coordinate.latitude, self.coordinate.longitude);
     
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"TestNotification" object:nil];;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,4 +42,23 @@
 }
 */
 
+- (IBAction)createReminderButtonSelected:(UIButton *)sender
+{
+    NSString *reminderName = _reminderText.text;
+    NSNumber *radius = [NSNumber numberWithFloat:_radiusText.text.floatValue]; //update 100 to be from text field
+    
+    Reminder *reminder = [Reminder object];
+    
+    reminder.name = reminderName;
+    reminder.radius = radius;
+    reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+    
+    if (self.completion)
+    {
+        NSLog(@"Reminder: %@", reminderName);
+        self.completion([MKCircle circleWithCenterCoordinate:self.coordinate radius:radius.floatValue]);
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }
+}
 @end
