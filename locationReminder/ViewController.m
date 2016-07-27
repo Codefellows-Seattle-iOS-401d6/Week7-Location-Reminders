@@ -52,6 +52,7 @@
     [self.mapView.layer setCornerRadius:20.0];
     [self.mapView setDelegate:self];
     [self.mapView setShowsUserLocation:YES];
+    [self randomColor];
     
     
     
@@ -105,11 +106,17 @@
 
 -(UIColor *)randomColor
 {
-    CGFloat hue = ( arc4random() % 256 / 256.0 );
-    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;
-    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;
-    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
-    return color;
+    UIColor *blue = [UIColor colorWithRed:0.10 green:0.10 blue:1.00 alpha:1.0];
+    UIColor *green = [UIColor colorWithRed:0.10 green:1.00 blue:0.10 alpha:1.0];
+    UIColor *purple = [UIColor colorWithRed:0.50 green:0.10 blue:0.50 alpha:1.0];
+    UIColor *white = [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
+    UIColor *gray = [UIColor colorWithRed:0.50 green:0.50 blue:0.50 alpha:1.0];
+    
+    NSArray *colors = @[blue, green, purple, white, gray];
+    
+    UIColor *random = colors[arc4random_uniform(colors.count)];
+    
+    return random;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -193,6 +200,7 @@
     }
     
     annotationView.canShowCallout = YES;
+    annotationView.pinTintColor = [self randomColor];
     
     UIButton *rightcalloutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
