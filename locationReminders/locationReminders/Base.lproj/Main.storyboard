@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sWe-q1-I6Y">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIy-sV-A8Z">
+                                <rect key="frame" x="218" y="526" width="165" height="30"/>
+                                <state key="normal" title="Colorize Pins"/>
+                                <connections>
+                                    <action selector="firstLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xi7-Rn-Tyg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcP-Bo-4Ek">
+                                <rect key="frame" x="542" y="526" width="30" height="30"/>
+                                <state key="normal" title="Troll"/>
+                                <connections>
+                                    <action selector="rightLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bm7-ix-EZJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZt-0F-27h">
+                                <rect key="frame" x="28" y="526" width="55" height="30"/>
+                                <state key="normal" title="Hualalai"/>
+                                <connections>
+                                    <action selector="leftLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mzh-C1-paL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edl-2c-qF5">
+                                <rect key="frame" x="235" y="564" width="132" height="30"/>
+                                <state key="normal" title="Zoom to Show Pins"/>
+                                <connections>
+                                    <action selector="locateButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nRk-3D-uD3"/>
+                                </connections>
+                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AMr-Ix-yD4">
+                                <rect key="frame" x="20" y="72" width="560" height="450"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="dUD-dJ-8gS" appends="YES" id="Fht-nN-P7e"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JZt-0F-27h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="0Yv-HJ-v9B"/>
+                            <constraint firstItem="AMr-Ix-yD4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="2uj-Oo-KuK"/>
+                            <constraint firstItem="AMr-Ix-yD4" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="3BU-kb-mrO"/>
+                            <constraint firstItem="wIy-sV-A8Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5KH-Nx-FqJ"/>
+                            <constraint firstItem="wIy-sV-A8Z" firstAttribute="top" secondItem="AMr-Ix-yD4" secondAttribute="bottom" constant="4" id="7Bh-Of-F8x"/>
+                            <constraint firstItem="edl-2c-qF5" firstAttribute="top" secondItem="wIy-sV-A8Z" secondAttribute="bottom" constant="8" id="9mG-U3-8vC"/>
+                            <constraint firstItem="AMr-Ix-yD4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="BSu-U3-bpc"/>
+                            <constraint firstItem="AMr-Ix-yD4" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="CfV-vs-CFh"/>
+                            <constraint firstItem="edl-2c-qF5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IcT-hd-n3c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jcP-Bo-4Ek" secondAttribute="trailing" constant="8" id="Z9m-Zu-HII"/>
+                            <constraint firstItem="wIy-sV-A8Z" firstAttribute="top" secondItem="AMr-Ix-yD4" secondAttribute="bottom" constant="14" id="dsk-ur-JC8"/>
+                            <constraint firstItem="JZt-0F-27h" firstAttribute="top" secondItem="wIy-sV-A8Z" secondAttribute="top" id="oXv-2I-CRY"/>
+                            <constraint firstItem="jcP-Bo-4Ek" firstAttribute="top" secondItem="wIy-sV-A8Z" secondAttribute="top" id="uSA-Ko-Q8X"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dsk-ur-JC8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="oYg-oe-C9Z"/>
+                    <connections>
+                        <outlet property="mapView" destination="AMr-Ix-yD4" id="Yq6-nj-scm"/>
+                        <segue destination="4B1-hP-1Le" kind="show" identifier="DetailViewController" id="D9k-mI-smz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="dUD-dJ-8gS">
+                    <connections>
+                        <action selector="handle_longpress:" destination="BYZ-38-t0r" id="Qym-gT-2H5"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1117" y="429"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="kGt-Q9-Rmm">
+            <objects>
+                <viewController id="4B1-hP-1Le" customClass="DetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MaM-c2-cKd"/>
+                        <viewControllerLayoutGuide type="bottom" id="LGk-Dv-miG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PkN-oK-bZ0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vnc-9T-6KZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="429"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gca-IH-bvo">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sWe-q1-I6Y" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hgz-C2-6bb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vYE-g5-DfI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pit-IB-NER" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="429"/>
+        </scene>
+    </scenes>
+</document>
