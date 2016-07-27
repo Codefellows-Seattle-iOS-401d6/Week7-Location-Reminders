@@ -11,7 +11,13 @@
 
 @interface DetailViewController : UIViewController
 
+typedef void(^DetailViewControllerCompletion)(MKCircle *circle);
+
 @property (strong, nonatomic) NSString *annotationTitle;
 @property (nonatomic) CLLocationCoordinate2D coordinate; // not strong with struct
+
+@property (copy, nonatomic) DetailViewControllerCompletion completion;
+
+
 
 @end

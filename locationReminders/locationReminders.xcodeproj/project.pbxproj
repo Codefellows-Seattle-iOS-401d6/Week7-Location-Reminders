@@ -19,6 +19,11 @@
 		69520B241D4686AC00F5F276 /* Parse.framework in Copy Files (Parse & Bolts) */ = {isa = PBXBuildFile; fileRef = 69520B1F1D46860200F5F276 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		699379551D47CDF800314EB4 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699379541D47CDF800314EB4 /* LocationController.m */; };
 		699379581D47E02900314EB4 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699379571D47E02900314EB4 /* DetailViewController.m */; };
+		6993795A1D492BE900314EB4 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699379591D492BE900314EB4 /* ParseUI.framework */; };
+		6993795B1D492C4A00314EB4 /* ParseUI.framework in Copy Files (Parse & Bolts) */ = {isa = PBXBuildFile; fileRef = 699379591D492BE900314EB4 /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6993795E1D49309200314EB4 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 6993795D1D49309200314EB4 /* Reminder.m */; };
+		699379601D49589700314EB4 /* head.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6993795F1D49589700314EB4 /* head.jpg */; };
+		699379631D495B1600314EB4 /* RemindersPFLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 699379621D495B1600314EB4 /* RemindersPFLoginViewController.m */; };
 		69C8BC721D4694E7003047FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69C8BC711D4694E7003047FE /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				6993795B1D492C4A00314EB4 /* ParseUI.framework in Copy Files (Parse & Bolts) */,
 				69520B231D4686AC00F5F276 /* Bolts.framework in Copy Files (Parse & Bolts) */,
 				69520B241D4686AC00F5F276 /* Parse.framework in Copy Files (Parse & Bolts) */,
 			);
@@ -54,6 +60,12 @@
 		699379541D47CDF800314EB4 /* LocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationController.m; path = ../LocationController.m; sourceTree = "<group>"; };
 		699379561D47E02900314EB4 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		699379571D47E02900314EB4 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		699379591D492BE900314EB4 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		6993795C1D49309200314EB4 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		6993795D1D49309200314EB4 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		6993795F1D49589700314EB4 /* head.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = head.jpg; sourceTree = "<group>"; };
+		699379611D495B1600314EB4 /* RemindersPFLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindersPFLoginViewController.h; sourceTree = "<group>"; };
+		699379621D495B1600314EB4 /* RemindersPFLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindersPFLoginViewController.m; sourceTree = "<group>"; };
 		69C8BC711D4694E7003047FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -64,6 +76,7 @@
 			files = (
 				69520B201D46860200F5F276 /* Bolts.framework in Frameworks */,
 				69C8BC721D4694E7003047FE /* MapKit.framework in Frameworks */,
+				6993795A1D492BE900314EB4 /* ParseUI.framework in Frameworks */,
 				69520B211D46860200F5F276 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +87,8 @@
 		69520AFB1D46824900F5F276 = {
 			isa = PBXGroup;
 			children = (
+				6993795F1D49589700314EB4 /* head.jpg */,
+				699379591D492BE900314EB4 /* ParseUI.framework */,
 				69C8BC711D4694E7003047FE /* MapKit.framework */,
 				69520B1E1D46860200F5F276 /* Bolts.framework */,
 				69520B1F1D46860200F5F276 /* Parse.framework */,
@@ -99,6 +114,8 @@
 				69520B0B1D46824A00F5F276 /* AppDelegate.m */,
 				69520B0D1D46824A00F5F276 /* ViewController.h */,
 				69520B0E1D46824A00F5F276 /* ViewController.m */,
+				699379611D495B1600314EB4 /* RemindersPFLoginViewController.h */,
+				699379621D495B1600314EB4 /* RemindersPFLoginViewController.m */,
 				69520B101D46824A00F5F276 /* Main.storyboard */,
 				699379561D47E02900314EB4 /* DetailViewController.h */,
 				699379571D47E02900314EB4 /* DetailViewController.m */,
@@ -106,6 +123,8 @@
 				69520B151D46824A00F5F276 /* LaunchScreen.storyboard */,
 				69520B181D46824A00F5F276 /* Info.plist */,
 				69520B071D46824900F5F276 /* Supporting Files */,
+				6993795C1D49309200314EB4 /* Reminder.h */,
+				6993795D1D49309200314EB4 /* Reminder.m */,
 			);
 			path = locationReminders;
 			sourceTree = "<group>";
@@ -182,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69520B171D46824A00F5F276 /* LaunchScreen.storyboard in Resources */,
+				699379601D49589700314EB4 /* head.jpg in Resources */,
 				69520B141D46824A00F5F276 /* Assets.xcassets in Resources */,
 				69520B121D46824A00F5F276 /* Main.storyboard in Resources */,
 			);
@@ -194,7 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				699379631D495B1600314EB4 /* RemindersPFLoginViewController.m in Sources */,
 				699379581D47E02900314EB4 /* DetailViewController.m in Sources */,
+				6993795E1D49309200314EB4 /* Reminder.m in Sources */,
 				699379551D47CDF800314EB4 /* LocationController.m in Sources */,
 				69520B0F1D46824A00F5F276 /* ViewController.m in Sources */,
 				69520B0C1D46824A00F5F276 /* AppDelegate.m in Sources */,
@@ -315,6 +337,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = locationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -330,6 +353,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = locationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -7,8 +7,11 @@
 //
 
 #import "DetailViewController.h"
+#import "Reminder.h"
 
 @interface DetailViewController ()
+
+
 
 @end
 
@@ -19,11 +22,42 @@
 
     NSLog(@"TITLE: %@", self.annotationTitle);
     NSLog(@"Location: %f, %f", self.coordinate.latitude, self.coordinate.longitude);
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"TestNotification" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)createReminderButtonSelected:(UIButton *)sender {
+    
+    // get two strings from text fields
+    
+    NSString *reminderName = @"Test Reminder";
+    NSNumber *radius = [NSNumber numberWithFloat:100.0];
+    
+    Reminder *reminder = [Reminder object];
+    
+    reminder.name = reminderName;
+    reminder.radius = radius;
+    
+    reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+    
+    if (self.completion) {
+        self.completion([MKCircle circleWithCenterCoordinate:self.coordinate radius:radius.floatValue]);
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    
+    [reminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                NSLog(@"Succeeded: %i, Error: %@", succeeded,error);
+    }];
+    //    [testObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    //        NSLog(@"Succeeded: %i, Error: %@", succeeded,error);
+    //    }];
+    //    // 1 sucess, 0 failure
+    
 }
 
 /*
