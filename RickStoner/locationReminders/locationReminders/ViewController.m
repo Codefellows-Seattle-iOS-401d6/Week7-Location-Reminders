@@ -11,6 +11,7 @@
 #import "LocationController.h"
 #import "DetailedViewController.h"
 #import "RandomColor.h"
+#import "Anagram.h"
 
 
 @interface ViewController () <MKMapViewDelegate, LocationControllerDelegate>
@@ -31,9 +32,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.mapView setDelegate:self];
+    [self fiveAnnotations];
     self.mapView.mapType = MKMapTypeSatellite;
     [self.mapView setMapType: self.mapView.mapType];
     [self.mapView.layer setCornerRadius:20.0];
+    
+    // Anagram check
+    NSLog(@"1st Test: %i, 2nd Test: %i", [Anagram anagramCheck:@"test" secondWord:@"sets"], [Anagram anagramCheck:@"ciname" secondWord:@"iceman"]);
+    
     
 }
 
@@ -70,6 +76,28 @@
     }];
 }
 
+- (void)fiveAnnotations {
+    MKPointAnnotation *centuryLink = [[MKPointAnnotation alloc]init];
+    centuryLink.coordinate = CLLocationCoordinate2DMake(47.5952, -122.3316);
+    centuryLink.title = @"Century Link Field";
+    MKPointAnnotation *rainier = [[MKPointAnnotation alloc]init];
+    rainier.coordinate = CLLocationCoordinate2DMake(46.8523, -121.7603);
+    rainier.title = @"Mt. Rainier";
+    MKPointAnnotation *pikePlace = [[MKPointAnnotation alloc]init];
+    pikePlace.coordinate = CLLocationCoordinate2DMake(47.6101, -122.3421);
+    pikePlace.title = @"Pike Place";
+    MKPointAnnotation *codeFellows = [[MKPointAnnotation alloc]init];
+    codeFellows.coordinate = CLLocationCoordinate2DMake(47.6181, -122.3511);
+    codeFellows.title = @"Code Fellows";
+    MKPointAnnotation *myHouse = [[MKPointAnnotation alloc]init]; //well, Bill Gates house, but I can dream
+    myHouse.coordinate = CLLocationCoordinate2DMake(47.6277, -122.2419);
+    myHouse.title = @"My house... ok, it's Bill Gate's";
+    NSArray * points = @[centuryLink, rainier, pikePlace, codeFellows, myHouse];
+    
+    [self.mapView addAnnotations:points];
+    
+}
+
 
 - (IBAction)locationOneButtonSelected:(UIButton *)sender {
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6205, -122.3493);
@@ -91,7 +119,7 @@
 
 - (IBAction)handleLongPress:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
-        CGPoint touchPoint =[sender locationInView:self.mapView]; // CGPoint?
+        CGPoint touchPoint =[sender locationInView:self.mapView];
         CLLocationCoordinate2D touchMapCoordinate = [self.mapView convertPoint:touchPoint toCoordinateFromView:self.mapView];
         MKPointAnnotation *newPoint = [[MKPointAnnotation alloc]init];
         newPoint.coordinate = touchMapCoordinate;
