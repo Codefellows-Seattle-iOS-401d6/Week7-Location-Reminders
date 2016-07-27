@@ -12,9 +12,10 @@
 #import "DetailedViewController.h"
 #import "RandomColor.h"
 #import "Anagram.h"
+@import ParseUI;
 
 
-@interface ViewController () <MKMapViewDelegate, LocationControllerDelegate>
+@interface ViewController () <MKMapViewDelegate, LocationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -33,6 +34,7 @@
     [super viewDidLoad];
     [self.mapView setDelegate:self];
     [self fiveAnnotations];
+    [self login];
     self.mapView.mapType = MKMapTypeSatellite;
     [self.mapView setMapType: self.mapView.mapType];
     [self.mapView.layer setCornerRadius:20.0];
@@ -183,5 +185,39 @@
 }
 
 #pragma mark - Parse Login/Sign Up
+
+- (void)login {
+    if (![PFUser currentUser]) {
+        PFLogInViewController *loginViewController = [[PFLogInViewController alloc]init];
+        
+        loginViewController.delegate = self;
+        loginViewController.signUpController.delegate = self;
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    } else {
+        [self setupAdditionalUI];
+    }
+}
+
+- (void)setupAdditionalUI {
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc]initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
+    self.navigationItem.leftBarButtonItem = signOutButton;
+}
+
+- (void)signOut {
+    [PFUser logOut];
+    [self login];
+}
+
+#pragma Mark - PF Delegate Methods
+
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
+
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
 
 @end

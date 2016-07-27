@@ -8,6 +8,7 @@
 
 #import "DetailedViewController.h"
 #import "Reminder.h"
+#import <math.h>
 @import Parse;
 
 @interface DetailedViewController ()
@@ -34,16 +35,21 @@
     NSString *reminderName = self.reminderTextField.text;
     NSNumber *radius = [NSDecimalNumber decimalNumberWithString:self.radiusTextField.text];
     
-
-    Reminder *reminder = [Reminder object];
-    reminder.name = reminderName;
-    reminder.radius = radius;
-
-    reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
-    
-    if (self.completion) {
-        self.completion([MKCircle circleWithCenterCoordinate:self.coordinate radius:radius.floatValue]);
-        [self.navigationController popViewControllerAnimated:YES];
+    if (!isnan(radius.floatValue)) {
+        NSLog(@"%f", radius.floatValue);
+        Reminder *reminder = [Reminder object];
+        reminder.name = reminderName;
+        reminder.radius = radius;
+        
+        reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+        
+        if (self.completion) {
+            self.completion([MKCircle circleWithCenterCoordinate:self.coordinate radius:radius.floatValue]);
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } else {
+        self.radiusTextField.text = @"";
+        self.radiusTextField.placeholder = @"Error: Input valid number";
     }
     
 }
