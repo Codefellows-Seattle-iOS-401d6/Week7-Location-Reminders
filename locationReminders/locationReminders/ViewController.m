@@ -46,7 +46,7 @@
 //        }
 //    }];
     
-    
+    [self setup];
     [self.mapView.layer setCornerRadius: 5.0];
     self.mapView.showsUserLocation = YES;
 }
@@ -65,24 +65,128 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max
+{
+    return min + arc4random_uniform((uint32_t)(max - min + 1));
+}
+- (void) setup {
+    NSMutableArray *annotationList = [[NSMutableArray alloc] init];
+    NSArray *dataArray = @[ @{@"Title" : @"Adjacent, Against, Upon",
+                              @"Subtitle" : @"Myrtle Edwards Park",
+                              @"latitude" : @47.6198243 ,
+                              @"longitude" : @-122.3616879
+                              },
+                            @{@"Title" : @"Fremont Troll",
+                              @"Subtitle" : @"Center of the Universe",
+                              @"latitude" : @47.6510 ,
+                              @"longitude" : @-122.3473
+                              },
+                            @{@"Title" : @"Code Fellows",
+                              @"Subtitle" : @"",
+                              @"latitude" : @47.618217 ,
+                              @"longitude" : @-122.3540207
+                              },
+                            @{@"Title" : @"Discovery Park",
+                              @"Subtitle" : @"",
+                              @"latitude" : @47.6555966 ,
+                              @"longitude" : @-122.4125337
+                              },
+                            @{@"Title" : @"Hualalai",
+                              @"Subtitle" : @"Hawaii",
+                              @"latitude" : @19.8285206 ,
+                              @"longitude" : @-155.9925522
+                              }
+                            ];
+    
+    for (id dict in dataArray) {
+        NSNumber *latitude, *longitude;
+        NSString *title, *subtitle;
+        if ( dict[@"latitude"] != nil){
+            latitude = dict[@"latitude"];
+        } else {
+            latitude = 0;
+        }
+        if ( dict[@"longitude"] != nil){
+            longitude = dict[@"longitude"];
+        } else {
+            longitude = 0;
+        }
+        if ( dict[@"Title"] != nil){
+            title = dict[@"Title"];
+        } else {
+            title = @"Empty Title";
+        }
+        if ( dict[@"Subtitle"] != nil){
+            subtitle = dict[@"Subtitle"];
+        } else {
+            subtitle = @"Empty subtitle";
+        }
+        
+        
+        
+        
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake( latitude.doubleValue, longitude.doubleValue);
+        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 50.0, 50.0);
+        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+        point.coordinate = coordinate;
+        point.title = title;
+        point.subtitle = subtitle;
+        
+        
+        [annotationList addObject:point];
+//        [self.mapView addAnnotation:point];
+//        [self.mapView selectAnnotation:point animated:YES];
+    }
+    
+    [self.mapView addAnnotations:annotationList ];
+
+}
+
+- (MKAnnotationView *)colorizeAnnotationView: (MKAnnotationView *)annotationView {
+    if ([annotationView isKindOfClass:[MKUserLocation class]]){ NSLog(@"UserLocation");return nil; }
+    
+    
+    MKPinAnnotationView *annotationPin = (MKPinAnnotationView *)annotationView;
+//    if(!annotationPin) {
+//        annotationPin = [[MKPinAnnotationView alloc] initWithAnnotation:annotationView.annotation reuseIdentifier:@"annotationView"];
+//    }
+    
+    NSInteger colorChoice = [self randomNumberBetween:1 maxNumber:5];
+    
+    NSLog(@"Pin Color: %i", colorChoice);
+    switch (colorChoice) {
+        case 1:
+            annotationPin.pinTintColor = [UIColor purpleColor];
+
+            break;
+        case 2:
+            annotationPin.pinTintColor = [UIColor greenColor];
+            break;
+        case 3:
+            annotationPin.pinTintColor = [UIColor orangeColor];
+            break;
+        case 4:
+            annotationPin.pinTintColor = [UIColor blackColor];
+            break;
+        case 5:
+            annotationPin.pinTintColor = [UIColor blueColor];
+            break;
+        default:
+            break;
+    }
+    
+
+    return (MKAnnotationView *)annotationPin;
+
+}
 
 - (IBAction)firstLocationButtonPressed:(id)sender {
-    self.mapView.showsUserLocation = NO;
 
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6198243
-, -122.3616879);
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 50.0, 50.0);
-    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
-    point.coordinate = coordinate;
-    point.title = @"Adjacent, Against, Upon";
-    point.subtitle = @"Myrtle Edwards Park";
-    
-    [self.mapView addAnnotation:point];
-    [self.mapView selectAnnotation:point animated:YES];
 
-    [self.mapView setMapType:MKMapTypeHybridFlyover];
-//    [self.mapView setMapType:MKMapTypeStandard];
-    [self.mapView setRegion:region animated: YES];
+    for (MKPointAnnotation *annotation in self.mapView.annotations)
+    {
+        [self colorizeAnnotationView: [self.mapView viewForAnnotation:annotation]];
+    }
  }
 - (IBAction)leftLocationButtonPressed:(id)sender {
     self.mapView.showsUserLocation = NO;
@@ -120,7 +224,9 @@
 
 }
 - (IBAction)locateButtonPressed:(id)sender {
-    self.mapView.showsUserLocation = YES;
+    self.mapView.showsUserLocation = NO;
+    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+
     NSLog(@"locate Button");
 }
 
@@ -138,6 +244,8 @@
         newPoint.title = @"New Location";
         
         [self.mapView addAnnotation:newPoint];
+        [self.mapView selectAnnotation:newPoint animated:YES];
+
     }
 }
 
@@ -155,7 +263,7 @@
 }
 
 - (void)locationControllerDidUpdateLocation:(CLLocation *)location{
-    NSLog(@"update location callback");
+//    NSLog(@"update location callback");
     [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(location.coordinate, 350.0, 350.0) animated:YES];
 }
 

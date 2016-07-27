@@ -19,36 +19,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIy-sV-A8Z">
-                                <rect key="frame" x="218" y="556" width="165" height="30"/>
-                                <state key="normal" title="Adjacent, Against, Upon"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIy-sV-A8Z">
+                                <rect key="frame" x="218" y="526" width="165" height="30"/>
+                                <state key="normal" title="Colorize Pins"/>
                                 <connections>
                                     <action selector="firstLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xi7-Rn-Tyg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcP-Bo-4Ek">
-                                <rect key="frame" x="542" y="556" width="30" height="30"/>
+                                <rect key="frame" x="542" y="526" width="30" height="30"/>
                                 <state key="normal" title="Troll"/>
                                 <connections>
                                     <action selector="rightLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bm7-ix-EZJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZt-0F-27h">
-                                <rect key="frame" x="28" y="556" width="55" height="30"/>
+                                <rect key="frame" x="28" y="526" width="55" height="30"/>
                                 <state key="normal" title="Hualalai"/>
                                 <connections>
                                     <action selector="leftLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mzh-C1-paL"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edl-2c-qF5">
-                                <rect key="frame" x="277" y="594" width="47" height="30"/>
-                                <state key="normal" title="Locate"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edl-2c-qF5">
+                                <rect key="frame" x="235" y="564" width="132" height="30"/>
+                                <state key="normal" title="Zoom to Show Pins"/>
                                 <connections>
                                     <action selector="locateButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nRk-3D-uD3"/>
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AMr-Ix-yD4">
-                                <rect key="frame" x="20" y="72" width="560" height="480"/>
+                                <rect key="frame" x="20" y="72" width="560" height="450"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="dUD-dJ-8gS" appends="YES" id="Fht-nN-P7e"/>
@@ -64,7 +64,7 @@
                             <constraint firstItem="wIy-sV-A8Z" firstAttribute="top" secondItem="AMr-Ix-yD4" secondAttribute="bottom" constant="4" id="7Bh-Of-F8x"/>
                             <constraint firstItem="edl-2c-qF5" firstAttribute="top" secondItem="wIy-sV-A8Z" secondAttribute="bottom" constant="8" id="9mG-U3-8vC"/>
                             <constraint firstItem="AMr-Ix-yD4" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="BSu-U3-bpc"/>
-                            <constraint firstItem="AMr-Ix-yD4" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" id="CfV-vs-CFh"/>
+                            <constraint firstItem="AMr-Ix-yD4" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="CfV-vs-CFh"/>
                             <constraint firstItem="edl-2c-qF5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IcT-hd-n3c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jcP-Bo-4Ek" secondAttribute="trailing" constant="8" id="Z9m-Zu-HII"/>
                             <constraint firstItem="wIy-sV-A8Z" firstAttribute="top" secondItem="AMr-Ix-yD4" secondAttribute="bottom" constant="14" id="dsk-ur-JC8"/>
