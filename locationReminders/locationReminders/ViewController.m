@@ -142,15 +142,17 @@
 
 }
 
+
+
 - (MKAnnotationView *)colorizeAnnotationView: (MKAnnotationView *)annotationView {
-    if ([annotationView isKindOfClass:[MKUserLocation class]]){ NSLog(@"UserLocation");return nil; }
+//    NSLog(@"AnnotationView Type: %@", [annotationView class]);
+    if ([annotationView isKindOfClass:[MKUserLocation class]]){ NSLog(@"MKUserLocation");return nil; }
+//    if ([annotationView isKindOfClass:[MKModernUserLocationView class]]){ NSLog(@"MKModernUserLocationView");return nil; }
     
-    
+        
     MKPinAnnotationView *annotationPin = (MKPinAnnotationView *)annotationView;
-//    if(!annotationPin) {
-//        annotationPin = [[MKPinAnnotationView alloc] initWithAnnotation:annotationView.annotation reuseIdentifier:@"annotationView"];
-//    }
-    
+    if ([annotationView isKindOfClass: [MKPinAnnotationView class]]){
+
     NSInteger colorChoice = [self randomNumberBetween:1 maxNumber:5];
     
     NSLog(@"Pin Color: %i", colorChoice);
@@ -175,6 +177,7 @@
             break;
     }
     
+    }
 
     return (MKAnnotationView *)annotationPin;
 
@@ -224,7 +227,7 @@
 
 }
 - (IBAction)locateButtonPressed:(id)sender {
-    self.mapView.showsUserLocation = NO;
+//    self.mapView.showsUserLocation = NO;
     [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 
     NSLog(@"locate Button");
