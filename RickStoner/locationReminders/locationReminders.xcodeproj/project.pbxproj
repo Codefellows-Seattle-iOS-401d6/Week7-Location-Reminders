@@ -20,6 +20,7 @@
 		044FA5A81D48686F00F127BC /* Anagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 044FA5A71D48686F00F127BC /* Anagram.m */; };
 		044FA5AA1D492BF000F127BC /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044FA5A91D492BF000F127BC /* ParseUI.framework */; };
 		044FA5AB1D492C4700F127BC /* ParseUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 044FA5A91D492BF000F127BC /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		044FA5AE1D49482D00F127BC /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = 044FA5AD1D49482D00F127BC /* Reminder.m */; };
 		049E0CFB1D46BBE600C827F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049E0CFA1D46BBE600C827F0 /* Bolts.framework */; };
 		049E0CFD1D46BBF100C827F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049E0CFC1D46BBF100C827F0 /* Parse.framework */; };
 		049E0CFE1D46BBFF00C827F0 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 049E0CFC1D46BBF100C827F0 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -62,6 +63,8 @@
 		044FA5A61D48686F00F127BC /* Anagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anagram.h; sourceTree = "<group>"; };
 		044FA5A71D48686F00F127BC /* Anagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anagram.m; sourceTree = "<group>"; };
 		044FA5A91D492BF000F127BC /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		044FA5AC1D49482D00F127BC /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		044FA5AD1D49482D00F127BC /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
 		049E0CFA1D46BBE600C827F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		049E0CFC1D46BBF100C827F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +152,8 @@
 		044FA59F1D47F35B00F127BC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				044FA5AC1D49482D00F127BC /* Reminder.h */,
+				044FA5AD1D49482D00F127BC /* Reminder.m */,
 				044FA5A31D48165A00F127BC /* RandomColor.h */,
 				044FA5A41D48165A00F127BC /* RandomColor.m */,
 				044FA59A1D47F33100F127BC /* LocationController.h */,
@@ -236,6 +241,7 @@
 				044FA59C1D47F33100F127BC /* LocationController.m in Sources */,
 				044B80A81D46825D007BB676 /* ViewController.m in Sources */,
 				044FA5A81D48686F00F127BC /* Anagram.m in Sources */,
+				044FA5AE1D49482D00F127BC /* Reminder.m in Sources */,
 				044FA5A51D48165A00F127BC /* RandomColor.m in Sources */,
 				044B80A51D46825D007BB676 /* AppDelegate.m in Sources */,
 				044B80A21D46825D007BB676 /* main.m in Sources */,
