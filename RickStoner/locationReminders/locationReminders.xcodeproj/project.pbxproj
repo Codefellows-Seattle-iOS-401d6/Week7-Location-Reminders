@@ -18,6 +18,8 @@
 		044FA5A21D47F6AF00F127BC /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044FA5A11D47F6AF00F127BC /* DetailedViewController.m */; };
 		044FA5A51D48165A00F127BC /* RandomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 044FA5A41D48165A00F127BC /* RandomColor.m */; };
 		044FA5A81D48686F00F127BC /* Anagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 044FA5A71D48686F00F127BC /* Anagram.m */; };
+		044FA5AA1D492BF000F127BC /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044FA5A91D492BF000F127BC /* ParseUI.framework */; };
+		044FA5AB1D492C4700F127BC /* ParseUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 044FA5A91D492BF000F127BC /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		049E0CFB1D46BBE600C827F0 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049E0CFA1D46BBE600C827F0 /* Bolts.framework */; };
 		049E0CFD1D46BBF100C827F0 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049E0CFC1D46BBF100C827F0 /* Parse.framework */; };
 		049E0CFE1D46BBFF00C827F0 /* Parse.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 049E0CFC1D46BBF100C827F0 /* Parse.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -31,6 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				044FA5AB1D492C4700F127BC /* ParseUI.framework in CopyFiles */,
 				049E0CFF1D46BC0400C827F0 /* Bolts.framework in CopyFiles */,
 				049E0CFE1D46BBFF00C827F0 /* Parse.framework in CopyFiles */,
 			);
@@ -58,6 +61,7 @@
 		044FA5A41D48165A00F127BC /* RandomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomColor.m; sourceTree = "<group>"; };
 		044FA5A61D48686F00F127BC /* Anagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anagram.h; sourceTree = "<group>"; };
 		044FA5A71D48686F00F127BC /* Anagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anagram.m; sourceTree = "<group>"; };
+		044FA5A91D492BF000F127BC /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		049E0CFA1D46BBE600C827F0 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		049E0CFC1D46BBF100C827F0 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +73,7 @@
 			files = (
 				049E0CFD1D46BBF100C827F0 /* Parse.framework in Frameworks */,
 				049E0CFB1D46BBE600C827F0 /* Bolts.framework in Frameworks */,
+				044FA5AA1D492BF000F127BC /* ParseUI.framework in Frameworks */,
 				044B80B81D46AA0D007BB676 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +84,7 @@
 		044B80941D46825D007BB676 = {
 			isa = PBXGroup;
 			children = (
+				044FA5A91D492BF000F127BC /* ParseUI.framework */,
 				049E0CFC1D46BBF100C827F0 /* Parse.framework */,
 				049E0CFA1D46BBE600C827F0 /* Bolts.framework */,
 				044B80B71D46AA0D007BB676 /* MapKit.framework */,
@@ -350,6 +356,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = locationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -365,6 +372,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = locationReminders/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
