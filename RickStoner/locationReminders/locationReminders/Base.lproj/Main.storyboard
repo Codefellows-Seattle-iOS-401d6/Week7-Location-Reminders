@@ -87,8 +87,49 @@
                     <view key="view" contentMode="scaleToFill" id="8AD-P1-TOS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reminder" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vaF-Cq-Nhv">
+                                <rect key="frame" x="200" y="90" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Radius (in m)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f9K-25-Jzl">
+                                <rect key="frame" x="200" y="190" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="xTy-MX-dOy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYU-Ea-p8a">
+                                <rect key="frame" x="249" y="285" width="103" height="30"/>
+                                <state key="normal" title="Save Reminder"/>
+                                <connections>
+                                    <action selector="saveReminderSelected:" destination="f02-jL-AnH" eventType="touchUpInside" id="2dF-M7-XxB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DYU-Ea-p8a" firstAttribute="centerX" secondItem="8AD-P1-TOS" secondAttribute="centerX" id="0Os-to-lzd"/>
+                            <constraint firstItem="DYU-Ea-p8a" firstAttribute="centerY" secondItem="8AD-P1-TOS" secondAttribute="centerY" id="2fL-8S-D0T"/>
+                            <constraint firstItem="vaF-Cq-Nhv" firstAttribute="top" secondItem="zKF-27-4xg" secondAttribute="bottom" constant="70" id="Dzz-dp-YlD"/>
+                            <constraint firstItem="vaF-Cq-Nhv" firstAttribute="centerX" secondItem="8AD-P1-TOS" secondAttribute="centerX" id="JWX-q4-lda"/>
+                            <constraint firstItem="f9K-25-Jzl" firstAttribute="top" secondItem="vaF-Cq-Nhv" secondAttribute="bottom" constant="70" id="ZRY-RG-Qbh"/>
+                            <constraint firstItem="f9K-25-Jzl" firstAttribute="width" secondItem="vaF-Cq-Nhv" secondAttribute="width" id="aQH-Qn-mlB"/>
+                            <constraint firstItem="f9K-25-Jzl" firstAttribute="centerX" secondItem="8AD-P1-TOS" secondAttribute="centerX" id="bBn-nA-eCH"/>
+                            <constraint firstItem="DYU-Ea-p8a" firstAttribute="top" secondItem="f9K-25-Jzl" secondAttribute="bottom" constant="60" id="j53-VC-acO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="j53-VC-acO"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="radiusTextField" destination="f9K-25-Jzl" id="VZt-7n-B2l"/>
+                        <outlet property="reminderTextField" destination="vaF-Cq-Nhv" id="6ku-dE-W9H"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xoc-3T-D1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

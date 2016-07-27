@@ -157,6 +157,13 @@
             DetailedViewController *detailedViewController = (DetailedViewController *)segue.destinationViewController;
             detailedViewController.annotationTitle = annotationView.annotation.title;
             detailedViewController.coordinate = annotationView.annotation.coordinate;
+            
+            __weak typeof (self)weakSelf = self;
+            detailedViewController.completion = ^(MKCircle *circle){
+                __strong typeof(weakSelf)strongSelf = weakSelf;
+                [strongSelf.mapView removeAnnotation:annotationView.annotation];
+                [strongSelf.mapView addOverlay:circle];
+            };
         }
     }
 }
@@ -164,5 +171,17 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     [self performSegueWithIdentifier:@"DetailedViewController" sender:view];
 }
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+    MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
+    circleRenderer.strokeColor = [UIColor blackColor];
+    circleRenderer.lineWidth = 2.0;
+    circleRenderer.fillColor = [UIColor blueColor];
+    circleRenderer.alpha = 0.2;
+    
+    return circleRenderer;
+}
+
+#pragma mark - Parse Login/Sign Up
 
 @end
