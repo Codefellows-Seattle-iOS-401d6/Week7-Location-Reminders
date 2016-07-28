@@ -27,6 +27,8 @@
         configuration.server = @"https://dg-location-test.herokuapp.com/parse";
     
     }]];
+    
+    [self registerForNotification];
     return YES;
 }
 
@@ -52,4 +54,9 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void) registerForNotification{
+    UIUserNotificationSettings *notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    
+    [[UIApplication sharedApplication]registerUserNotificationSettings:notificationSettings];
+}
 @end

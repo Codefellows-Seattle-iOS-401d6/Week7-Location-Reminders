@@ -26,10 +26,7 @@
     logoView.text = @"Seattle";
     logoView.textColor = [UIColor whiteColor];
     logoView.adjustsFontSizeToFitWidth = YES;
-    [logoView setFont:[UIFont boldSystemFontOfSize:48]];
-
-//    logo.font = [UIFont name:@"Pacifico"];
-    
+    [logoView setFont:[UIFont boldSystemFontOfSize:48]];    
     
     self.logInView.logo = logoView; // logo can be any UIView
 }

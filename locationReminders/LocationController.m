@@ -8,6 +8,7 @@
 
 #import "LocationController.h"
 @import CoreLocation;
+@import UIKit;
 
 @interface LocationController  () <CLLocationManagerDelegate>
 
@@ -44,5 +45,19 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     [self.delegate locationControllerDidUpdateLocation:locations.lastObject];
     [self setLocation:locations.lastObject];
+    
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
+    
+    NSLog(@"User did enter REgion");
+    
+    UILocalNotification *notification = [[UILocalNotification alloc]init];
+    notification.alertTitle = @"You have entered the matrix...";
+    notification.alertBody = @"The Pokémon Go Matrix...👁‍🗨";
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    
 }
 @end

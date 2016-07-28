@@ -296,6 +296,8 @@
 - (void)locationControllerDidUpdateLocation:(CLLocation *)location{
 //    NSLog(@"update location callback");
     [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(location.coordinate, 350.0, 350.0) animated:YES];
+    
+  
 }
 
 #pragma mark - MapViewDelegate
