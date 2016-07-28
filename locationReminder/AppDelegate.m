@@ -28,7 +28,16 @@
         
     }]];
     
+    [self registerForNotifications];
+    
     return YES;
+}
+
+-(void)registerForNotifications
+{
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    
+    [[UIApplication sharedApplication]registerUserNotificationSettings:settings];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

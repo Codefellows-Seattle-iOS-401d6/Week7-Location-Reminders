@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LocationController.h"
 #import "DetailViewController.h"
+#import "Reminder.h"
 
 @import Parse;
 @import ParseUI;
@@ -54,10 +55,8 @@
    // [self requestPermissions];
     [self.mapView.layer setCornerRadius:20.0];
     [self.mapView setDelegate:self];
-    [self.mapView setShowsUserLocation:YES];
     [self randomColor];
-    [self login];
-    
+    [self login];    
     
     
     CLLocationCoordinate2D pointOne;
