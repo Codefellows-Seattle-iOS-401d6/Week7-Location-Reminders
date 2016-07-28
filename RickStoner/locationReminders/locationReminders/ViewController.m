@@ -13,6 +13,7 @@
 #import "RandomColor.h"
 #import "Anagram.h"
 #import "ConvertToNumber.h"
+#import "Reminder.h"
 @import ParseUI;
 
 
@@ -34,6 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.mapView setDelegate:self];
+    [self parseQuery];
     [self fiveAnnotations];
     [self login];
     self.mapView.mapType = MKMapTypeSatellite;
@@ -60,11 +62,17 @@
 
 
 - (void)parseQuery {
-    PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Reminders"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (!error) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSLog(@"Objects: %@", objects);
+                
+                for (Reminder *object in objects) {
+                    MKPointAnnotation *location = [[MKPointAnnotation alloc]init];
+                    location.coordinate = CLLocationCoordinate2DMake(object.location.latitude, object.location.longitude);
+                    location.title = object.name;
+                    [self.mapView addAnnotation:location];
+                }
             }];
         }
     }];
@@ -134,7 +142,7 @@
 }
 
 - (void)locationControllerDelegateDidUpdateLocation:(CLLocation *)location {
-    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(location.coordinate, 500.0, 500.0) animated:YES];
+    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(location.coordinate, 1000.0, 1000.0) animated:YES];
 }
 
 #pragma mark - Mapview Delegate

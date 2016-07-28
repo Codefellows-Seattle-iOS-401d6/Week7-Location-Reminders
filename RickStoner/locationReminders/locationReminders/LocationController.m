@@ -34,7 +34,7 @@
         _locationManager = [[CLLocationManager alloc]init];
         _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        _locationManager.distanceFilter = 100.0;
+        _locationManager.distanceFilter = 300.0;
     }
     
     [_locationManager requestAlwaysAuthorization];

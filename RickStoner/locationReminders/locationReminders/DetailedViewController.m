@@ -23,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Title: %@, Coordinate: %f, %f", self.annotationTitle, self.coordinate.latitude, self.coordinate.longitude);
 }
 
 - (void)didReceiveMemoryWarning {
