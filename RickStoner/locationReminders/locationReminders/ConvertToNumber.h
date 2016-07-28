@@ -12,6 +12,6 @@
 
 + (NSString *)stringOfOnlyNumbers:(NSString *)stringInput;
 
-+ (NSNumber *)sum:(NSString *)stringInput;
++ (int)sum:(NSString *)stringInput;
 
 @end

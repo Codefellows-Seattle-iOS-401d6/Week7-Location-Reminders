@@ -12,6 +12,7 @@
 #import "DetailedViewController.h"
 #import "RandomColor.h"
 #import "Anagram.h"
+#import "ConvertToNumber.h"
 @import ParseUI;
 
 
@@ -39,8 +40,9 @@
     [self.mapView setMapType: self.mapView.mapType];
     [self.mapView.layer setCornerRadius:20.0];
     
-    // Anagram check
-    NSLog(@"1st Test: %i, 2nd Test: %i", [Anagram anagramCheck:@"test" secondWord:@"sets"], [Anagram anagramCheck:@"ciname" secondWord:@"iceman"]);
+    // Code Challenge sum of numbers
+    NSLog(@"1st Test: %zd, 2nd Test: %zd", [ConvertToNumber sum:@"4 added to 4 is 8, but with eight in here it's sixteen"], [ConvertToNumber sum:@"zero"]);
+    
     
     
 }
