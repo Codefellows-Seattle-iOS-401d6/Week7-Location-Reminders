@@ -10,6 +10,7 @@
 #import "Reminder.h"
 #import <math.h>
 @import Parse;
+#import "LocationController.h"
 
 @interface DetailedViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *reminderTextField;
@@ -43,6 +44,20 @@
         
         reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
         
+        __weak typeof(self) weakSelf = self;
+        [reminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            NSLog(@"Reminder saved to Parse Server");
+            
+            if (strongSelf.completion) {
+                if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+                    CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:strongSelf.coordinate radius:radius.floatValue identifier:reminderName];
+                    [[[LocationController sharedController]locationManager]startMonitoringForRegion:region];
+                    strongSelf.completion([MKCircle circleWithCenterCoordinate:strongSelf.coordinate radius:radius.floatValue]);
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                }
+            }
+        }];
         if (self.completion) {
             self.completion([MKCircle circleWithCenterCoordinate:self.coordinate radius:radius.floatValue]);
             [self.navigationController popViewControllerAnimated:YES];

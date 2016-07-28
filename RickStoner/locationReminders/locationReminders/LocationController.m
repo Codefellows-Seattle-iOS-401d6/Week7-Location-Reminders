@@ -7,6 +7,8 @@
 //
 
 #import "LocationController.h"
+@import UIKit;
+#import "Reminder.h"
 
 @interface LocationController () <CLLocationManagerDelegate>
 
@@ -44,6 +46,14 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     [self.delegate locationControllerDelegateDidUpdateLocation:locations.lastObject];
     [self setLocation:locations.lastObject];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    UILocalNotification *notification = [[UILocalNotification alloc]init];
+    notification.alertTitle = @"You hit your location";
+    notification.alertBody = @"It's time to complete your task";
+    
+    [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
 }
 
 @end
