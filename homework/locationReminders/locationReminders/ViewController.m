@@ -10,11 +10,11 @@
 #import <Parse/Parse.h>
 #import "LocationController.h"
 #import "DetailViewController.h"
-#import "AnagramDetector.h"
-
+#import "NumberSum.h"
+@import ParseUI;
 @import MapKit;
 
-@interface ViewController () <MKMapViewDelegate, LocationControllerDelegate>
+@interface ViewController () <MKMapViewDelegate, LocationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction)firstLocationButtonPressed:(UIButton *)sender;
@@ -49,12 +49,17 @@
     [self.mapView setDelegate:self];
     [self.mapView setShowsUserLocation:YES];
     
-    AnagramDetector *anagramDetector = [[AnagramDetector alloc]init];
-    [anagramDetector isAnagram:@"hello" secondString:@"olleh"];
-    [anagramDetector isAnagram:@"mucho" secondString:@"very"];
-    [anagramDetector isAnagram:@"hey" secondString:@"muy"];
-    [anagramDetector isAnagram:@"" secondString:@""];
-    [anagramDetector isAnagram:@"" secondString:@"not empty"];
+    [self login];
+    
+    //creating an observer for notification
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(testObserverFired) name:@"TestNotification" object:nil];
+
+    NumberSum *sumNumbers = [[NumberSum alloc]init];
+    [sumNumbers returnSum:@""];
+    [sumNumbers returnSum:@"1sfkla2 rew3 dfrewq4"];
+    [sumNumbers returnSum:@"fkdjsalkjrwe"];
+    [sumNumbers returnSum:@"555"];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,7 +78,19 @@
     for (MKPointAnnotation *newPoint in self.allLocationAnnotations) {
         [self.mapView addAnnotation:newPoint];
     }
-}
+ }
+////deallocating the observer
+//- (void)dealloc
+//{
+//    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"TestNotification" object:nil];
+//    
+//}
+////feedback that the notification fired and any actions when the observer receives the notification
+//- (void)testObserverFired
+//{
+//    NSLog(@"Notification Fired");
+//    
+//}
 
 - (IBAction)firstLocationButtonPressed:(UIButton *)sender
 {
@@ -141,7 +158,7 @@
 
 #pragma mark - LocationControllerDelegate
 
--(void)locationControllerDidUpdateLocation:(CLLocation *)location
+- (void)locationControllerDidUpdateLocation:(CLLocation *)location
 {
     [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(location.coordinate, 500.0, 500.0) animated:YES];
     
@@ -149,7 +166,7 @@
 
 #pragma mark - MKMapViewDelegate
 
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
 {
     //trying to avoid customizing our user location annotation (the blue pulsating circle indicating current location
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
@@ -200,7 +217,7 @@
     return point;
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"DetailViewController"]) {
         if ([sender isKindOfClass:[MKAnnotationView class]]) {
@@ -211,13 +228,81 @@
             
             detailViewController.annotationTitle = annotationView.annotation.title;
             detailViewController.coordinate = annotationView.annotation.coordinate;
+            
+            __weak typeof(self) weakSelf = self;
+            detailViewController.completion = ^(MKCircle *circle){
+                
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+
+                [strongSelf.mapView removeAnnotation:annotationView.annotation];
+                [strongSelf.mapView addOverlay:circle];
+            };
         }
     }
 }
 
--(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     [self performSegueWithIdentifier:@"DetailViewController" sender:view];
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
+    
+    circleRenderer.strokeColor = [UIColor blueColor];
+    circleRenderer.fillColor = [UIColor redColor];
+    
+    circleRenderer.alpha = 0.3;
+    
+    return circleRenderer;
+}
+
+#pragma mark - Parse Login/Signup
+
+- (void)login
+{
+    if (![PFUser currentUser]) {
+        PFLogInViewController *loginViewController = [[PFLogInViewController alloc]init];
+        
+        //make sure you conform to the appropriate delegates for 'self' to be a valid delegate
+        loginViewController.delegate = self;
+        loginViewController.signUpController.delegate = self;
+        
+        [self presentViewController:loginViewController animated:YES completion:nil];
+        
+    } else {
+        [self setupAdditionalUI];
+    }
+}
+
+- (void)setupAdditionalUI
+{
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc]initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
+    
+    self.navigationItem.leftBarButtonItem = signOutButton;
+}
+
+- (void)signOut
+{
+    [PFUser logOut];
+    [self login];
+}
+
+#pragma mark - PFLogInViewControllerDelegate
+
+- (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
+
+#pragma mark - PFSignUpViewControllerDelegate
+
+- (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
 }
 
 @end
