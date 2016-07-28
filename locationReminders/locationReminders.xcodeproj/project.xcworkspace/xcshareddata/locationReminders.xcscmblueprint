@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7E6CE6CC251D0D2BC68DEDB6ADE1D32A9826C0A3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7E6CE6CC251D0D2BC68DEDB6ADE1D32A9826C0A3" : 0,
+    "EB79EE5254103E98E9FA292F452FAD5F00FD61B2" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "550B6513-6DC6-4E4A-A076-F67A00A3E0B0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7E6CE6CC251D0D2BC68DEDB6ADE1D32A9826C0A3" : "Week8-Location-Reminders\/",
+    "EB79EE5254103E98E9FA292F452FAD5F00FD61B2" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "locationReminders",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "locationReminders\/locationReminders.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/erinroby\/Week8-Location-Reminders.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E6CE6CC251D0D2BC68DEDB6ADE1D32A9826C0A3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/erinroby\/iOS-401-class-5.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EB79EE5254103E98E9FA292F452FAD5F00FD61B2"
+    }
+  ]
+}
