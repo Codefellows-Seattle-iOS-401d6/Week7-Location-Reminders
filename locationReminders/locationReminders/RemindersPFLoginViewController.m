@@ -23,7 +23,7 @@
     
     UILabel *logoView = [[UILabel alloc]init];
     
-    logoView.text = @"ArtQuest";
+    logoView.text = @"Seattle";
     logoView.textColor = [UIColor whiteColor];
     logoView.adjustsFontSizeToFitWidth = YES;
     [logoView setFont:[UIFont boldSystemFontOfSize:48]];
@@ -42,11 +42,7 @@
     
     self.logInView.logo.frame = CGRectMake(logoFrame.origin.x, self.logInView.usernameField.frame.origin.y - logoFrame.size.height - 16, self.logInView.frame.size.width, logoFrame.size.height);
     
-    /* 
-     logInView!.logo!.sizeToFit()
-     let logoFrame = logInView!.logo!.frame
-     logInView!.logo!.frame = CGRectMake(logoFrame.origin.x, logInView!.usernameField!.frame.origin.y - logoFrame.height - 16, logInView!.frame.width,  logoFrame.height)
-     */
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -58,14 +54,7 @@
 
 /*
 #pragma mark - Navigation
- // remove the parse Logo
- let logo = UILabel()
- logo.text = "Vay.K"
- logo.textColor = UIColor.whiteColor()
- logo.font = UIFont(name: "Pacifico", size: 70)
- logo.shadowColor = UIColor.lightGrayColor()
- logo.shadowOffset = CGSizeMake(2, 2)
- logInView?.logo = logo
+
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

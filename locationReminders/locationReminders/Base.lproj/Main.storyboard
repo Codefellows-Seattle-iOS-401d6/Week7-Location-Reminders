@@ -104,16 +104,84 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsJ-FL-3iT">
-                                <rect key="frame" x="60" y="102" width="115" height="30"/>
-                                <state key="normal" title="Create Reminder"/>
-                                <connections>
-                                    <action selector="createReminderButtonSelected:" destination="4B1-hP-1Le" eventType="touchUpInside" id="ShP-ew-DaU"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KlH-43-FHI">
+                                <rect key="frame" x="20" y="112" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Txq-9U-PiG">
+                                <rect key="frame" x="181" y="234" width="238" height="106"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="23I-Ow-Ezi">
+                                        <rect key="frame" x="0.0" y="0.0" width="238" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder text:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sq-OQ-KXu">
+                                                <rect key="frame" x="0.0" y="0.0" width="112" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sYd-N6-d3C">
+                                                <rect key="frame" x="118" y="0.0" width="120" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="120" id="4oC-I9-RVr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="YuB-10-EJV">
+                                        <rect key="frame" x="80" y="38" width="158" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance (m):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7UA-jD-GF9">
+                                                <rect key="frame" x="0.0" y="0.0" width="102" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T8p-9w-Y1L">
+                                                <rect key="frame" x="108" y="0.0" width="50" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="IwQ-5t-HEK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsJ-FL-3iT">
+                                        <rect key="frame" x="123" y="76" width="115" height="30"/>
+                                        <state key="normal" title="Create Reminder"/>
+                                        <connections>
+                                            <action selector="createReminderButtonSelected:" destination="4B1-hP-1Le" eventType="touchUpInside" id="ShP-ew-DaU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KlH-43-FHI" firstAttribute="leading" secondItem="PkN-oK-bZ0" secondAttribute="leading" constant="243" id="8ck-xh-JtY"/>
+                            <constraint firstItem="KlH-43-FHI" firstAttribute="leading" secondItem="PkN-oK-bZ0" secondAttribute="leadingMargin" id="Esb-id-hG2"/>
+                            <constraint firstItem="KlH-43-FHI" firstAttribute="centerX" secondItem="PkN-oK-bZ0" secondAttribute="centerX" id="OUr-1c-jbm"/>
+                            <constraint firstItem="KlH-43-FHI" firstAttribute="top" secondItem="MaM-c2-cKd" secondAttribute="bottom" constant="48" id="XG7-eO-TS6"/>
+                            <constraint firstItem="Txq-9U-PiG" firstAttribute="centerX" secondItem="PkN-oK-bZ0" secondAttribute="centerX" id="bmj-Xu-DRr"/>
+                            <constraint firstItem="Txq-9U-PiG" firstAttribute="top" secondItem="KlH-43-FHI" secondAttribute="bottom" constant="101" id="dc0-Lc-hA1"/>
+                            <constraint firstItem="KlH-43-FHI" firstAttribute="trailing" secondItem="PkN-oK-bZ0" secondAttribute="trailingMargin" id="sJU-N3-bHp"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8ck-xh-JtY"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="DetailViewLabel" destination="KlH-43-FHI" id="kgD-tx-S3G"/>
+                        <outlet property="reminderRadius" destination="T8p-9w-Y1L" id="VK3-yh-PUW"/>
+                        <outlet property="reminderText" destination="sYd-N6-d3C" id="7oa-i4-ueA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vnc-9T-6KZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

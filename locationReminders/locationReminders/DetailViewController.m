@@ -11,7 +11,10 @@
 
 @interface DetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *DetailViewLabel;
+@property (weak, nonatomic) IBOutlet UITextField *reminderText;
 
+@property (weak, nonatomic) IBOutlet UITextField *reminderRadius;
 
 @end
 
@@ -19,10 +22,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setup];
 
     NSLog(@"TITLE: %@", self.annotationTitle);
     NSLog(@"Location: %f, %f", self.coordinate.latitude, self.coordinate.longitude);
     [[NSNotificationCenter defaultCenter]postNotificationName:@"TestNotification" object:nil];
+}
+
+- (void) setup{
+    _DetailViewLabel.text = [NSString stringWithFormat:@"Latitude: %f, \nLongitude: %f",self.coordinate.latitude, self.coordinate.longitude];
+    _reminderText.text = @"Reminder";
+    _reminderRadius.text = @"100.0";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,8 +43,9 @@
     
     // get two strings from text fields
     
-    NSString *reminderName = @"Test Reminder";
-    NSNumber *radius = [NSNumber numberWithFloat:100.0];
+    NSString *reminderName = _reminderText.text;
+
+    NSNumber *radius =  [NSNumber numberWithFloat: _reminderRadius.text.floatValue == 0 ? 100.0 : _reminderRadius.text.floatValue];
     
     Reminder *reminder = [Reminder object];
     
@@ -53,10 +64,7 @@
     [reminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                 NSLog(@"Succeeded: %i, Error: %@", succeeded,error);
     }];
-    //    [testObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-    //        NSLog(@"Succeeded: %i, Error: %@", succeeded,error);
-    //    }];
-    //    // 1 sucess, 0 failure
+
     
 }
 

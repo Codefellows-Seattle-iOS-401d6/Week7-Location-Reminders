@@ -56,8 +56,15 @@
     [self.mapView.layer setCornerRadius: 5.0];
     self.mapView.showsUserLocation = YES;
     
+    if (![PFUser currentUser]) {
+        [self login];
+
+    } else {
+        [self setupAdditionalUI];
+
     
-    [self login];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -323,7 +330,8 @@
                 __strong typeof (weakSelf) strongSelf = weakSelf;
 
             
-                [strongSelf.mapView removeAnnotation:annotationView.annotation];
+//                [strongSelf.mapView removeAnnotation:annotationView.annotation];
+                [strongSelf.mapView deselectAnnotation:annotationView.annotation animated:YES];
                 [strongSelf.mapView addOverlay:circle];
                 
                 
@@ -373,8 +381,15 @@
 }
 
 -(void) signOut {
-    [PFUser logOut];
-    [self login];
+    NSString *title = self.navigationItem.leftBarButtonItem.title;
+    if ([title isEqualToString:@"Sign Out"]){
+        [PFUser logOut];
+        self.navigationItem.leftBarButtonItem.title = @"Log In";
+ 
+    } else {
+        
+        [self login];
+    }
 }
 
 -(void)logInViewController:(RemindersPFLoginViewController *)logInController didLogInUser:(PFUser *)user{
