@@ -73,7 +73,13 @@
                             <constraint firstItem="Q8A-K5-s62" firstAttribute="baseline" secondItem="Awz-2q-imk" secondAttribute="baseline" id="rv2-kc-cIi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Mf0-wZ-R4e"/>
+                    <navigationItem key="navigationItem" id="Mf0-wZ-R4e">
+                        <barButtonItem key="rightBarButtonItem" title="Code Challenge" id="xjG-uX-Cwt">
+                            <connections>
+                                <segue destination="oec-Zz-agC" kind="show" identifier="CodeChallengeViewController" id="qww-5b-rhu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="firstLocationButtonSelected" destination="1fZ-yg-1rp" id="Urs-ol-lLJ"/>
                         <outlet property="mapView" destination="oAQ-IR-p3P" id="c1V-RB-8Y1"/>
@@ -89,7 +95,49 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1152" y="328"/>
+            <point key="canvasLocation" x="1015" y="313"/>
+        </scene>
+        <!--Code Challenge View Controller-->
+        <scene sceneID="tE7-y6-tdT">
+            <objects>
+                <viewController id="oec-Zz-agC" customClass="CodeChallengeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GAW-CD-b4t"/>
+                        <viewControllerLayoutGuide type="bottom" id="xMM-1b-Day"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TuX-mL-GUs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a string of characters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-Pu-HQe">
+                                <rect key="frame" x="20" y="228" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJ5-2b-Y2r">
+                                <rect key="frame" x="230" y="388" width="142" height="30"/>
+                                <state key="normal" title="Give me my number!"/>
+                                <connections>
+                                    <action selector="submitStringButtonPressed:" destination="oec-Zz-agC" eventType="touchUpInside" id="XWA-xn-ULX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G6d-Pu-HQe" firstAttribute="top" secondItem="GAW-CD-b4t" secondAttribute="bottom" constant="164" id="ewr-Vl-R7I"/>
+                            <constraint firstItem="G6d-Pu-HQe" firstAttribute="leading" secondItem="TuX-mL-GUs" secondAttribute="leading" constant="20" id="gPd-l6-C3a"/>
+                            <constraint firstAttribute="trailing" secondItem="G6d-Pu-HQe" secondAttribute="trailing" constant="20" id="jt8-RV-Tcv"/>
+                            <constraint firstItem="CJ5-2b-Y2r" firstAttribute="top" secondItem="G6d-Pu-HQe" secondAttribute="bottom" constant="130" id="r8K-X4-pJV"/>
+                            <constraint firstItem="CJ5-2b-Y2r" firstAttribute="centerX" secondItem="TuX-mL-GUs" secondAttribute="centerX" constant="1" id="va9-XG-iiA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stringTextField" destination="G6d-Pu-HQe" id="AdY-et-hdP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1up-zg-21C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1910" y="-343"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="79l-cx-Mwb">
@@ -102,8 +150,41 @@
                     <view key="view" contentMode="scaleToFill" id="dOt-zr-I8n">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cbc-Ek-kgc">
+                                <rect key="frame" x="243" y="445" width="115" height="30"/>
+                                <state key="normal" title="Create Reminder"/>
+                                <connections>
+                                    <action selector="createReminderButtonSelected:" destination="QcW-UV-xnz" eventType="touchUpInside" id="Drs-gz-NP0"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter reminder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dxh-1m-w8i">
+                                <rect key="frame" x="20" y="187" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter radius to pin (in meters)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Iq6-hH-Zfz">
+                                <rect key="frame" x="20" y="272" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dxh-1m-w8i" secondAttribute="trailing" constant="20" id="23U-7z-Vhf"/>
+                            <constraint firstItem="Cbc-Ek-kgc" firstAttribute="centerX" secondItem="dOt-zr-I8n" secondAttribute="centerX" id="7nP-xS-a3S"/>
+                            <constraint firstItem="Iq6-hH-Zfz" firstAttribute="leading" secondItem="dOt-zr-I8n" secondAttribute="leading" constant="20" id="FRF-Pp-c2T"/>
+                            <constraint firstItem="dxh-1m-w8i" firstAttribute="top" secondItem="nTY-Aj-ceC" secondAttribute="bottom" constant="123" id="FU8-Ss-27z"/>
+                            <constraint firstItem="dxh-1m-w8i" firstAttribute="leading" secondItem="dOt-zr-I8n" secondAttribute="leading" constant="20" id="as0-Cl-zdk"/>
+                            <constraint firstItem="Cbc-Ek-kgc" firstAttribute="top" secondItem="nTY-Aj-ceC" secondAttribute="bottom" constant="381" id="fCY-59-DyV"/>
+                            <constraint firstAttribute="trailing" secondItem="Iq6-hH-Zfz" secondAttribute="trailing" constant="20" id="kAe-uK-PSK"/>
+                            <constraint firstItem="Iq6-hH-Zfz" firstAttribute="top" secondItem="dxh-1m-w8i" secondAttribute="bottom" constant="55" id="xFe-DP-pxK"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="radiusTextField" destination="Iq6-hH-Zfz" id="QFF-82-1Dx"/>
+                        <outlet property="reminderTextField" destination="dxh-1m-w8i" id="g4X-iC-msZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nD-eZ-vyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

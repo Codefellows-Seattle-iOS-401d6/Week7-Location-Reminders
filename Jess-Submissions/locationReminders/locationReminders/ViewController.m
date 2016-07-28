@@ -11,9 +11,12 @@
 #import "LocationController.h"
 #import "DetailViewController.h"
 
+@import Parse;
+@import ParseUI;
+
 @import MapKit;
 
-@interface ViewController ()<MKMapViewDelegate, LocationControllerDelegate>
+@interface ViewController ()<MKMapViewDelegate, LocationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *firstLocationButtonSelected;
@@ -31,9 +34,8 @@
     [super viewDidLoad];
     [self.mapView.layer setCornerRadius:20.0];
     [self.mapView setDelegate:self];
-//    [self.mapView showsUserLocation:YES];
-     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(testObserverFired) name:@"TestNotification" object:nil];
-    
+    [self.mapView setShowsUserLocation:YES];
+    [self login];
     
     
     //demo : how to save objects
@@ -80,12 +82,12 @@
     
    
 }
-
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter]removeObserver: self name:@"TestNotification" object:nil];
-    
-}
+//
+//- (void)dealloc
+//{
+//    [[NSNotificationCenter defaultCenter]removeObserver: self name:@"TestNotification" object:nil];
+//    
+//}
 
 -(void)testObserverFired
 {
@@ -231,6 +233,18 @@
             
             detailViewController.annotationTitle = annotationView.annotation.title;
             detailViewController.coordinate = annotationView.annotation.coordinate;
+            
+            __weak typeof(self) weakSelf = self;
+            
+            detailViewController.completion = ^(MKCircle *circle)
+            {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+
+                
+                [strongSelf.mapView removeAnnotation:annotationView.annotation]; //removes pin
+                [strongSelf.mapView addOverlay:circle]; //adds overlay
+                
+            };
         };
     }
 }
@@ -241,14 +255,62 @@
 }
 
 
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    MKCircleRenderer *circleRenderer = [[MKCircleRenderer alloc]initWithOverlay:overlay];
+    circleRenderer.strokeColor = [UIColor blueColor];
+    circleRenderer.lineWidth = 1.25;
+    circleRenderer.fillColor = [UIColor redColor];
+    circleRenderer.alpha = 0.25;
+    
+    return circleRenderer;
+}
 
 
+#pragma mark - Parse Login/SignUp
 
+- (void)login
+{
+    if (![PFUser currentUser])
+    {
+        PFLogInViewController *loginViewController = [[PFLogInViewController alloc]init];
+        
+        loginViewController.delegate = self;
+        loginViewController.signUpController.delegate = self;
+        
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    } else
+    {
+        [self setupAdditionalUI];
+    }
+}
 
+- (void)setupAdditionalUI
+{
+    UIBarButtonItem *signOutButton = [[UIBarButtonItem alloc]initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(signOut)];
+    
+    
+    
+    self.navigationItem.leftBarButtonItem = signOutButton;
+}
 
+- (void)signOut
+{
+    [PFUser logOut];
+    [self login];
+}
 
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
 
-
+-(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setupAdditionalUI];
+}
 
 
 

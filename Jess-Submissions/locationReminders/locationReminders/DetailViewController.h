@@ -10,10 +10,13 @@
 
 @import MapKit;
 
+typedef void(^DetailViewControllerCompletion)(MKCircle *circle);
+
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic)NSString *annotationTitle;
-@property (nonatomic)CLLocationCoordinate2D coordinate; //not a pointer but a struct
+@property (nonatomic)CLLocationCoordinate2D coordinate; //not a pointer but a struct so no *
+@property (copy, nonatomic)DetailViewControllerCompletion completion; 
 
 
 @end
