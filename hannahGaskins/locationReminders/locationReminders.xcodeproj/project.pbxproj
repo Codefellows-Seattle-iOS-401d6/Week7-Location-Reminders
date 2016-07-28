@@ -10,8 +10,9 @@
 		EEC90A3C1D47CE0400ED0292 /* LocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC90A3B1D47CE0400ED0292 /* LocationController.m */; };
 		EEC90A411D47E03F00ED0292 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC90A401D47E03F00ED0292 /* DetailViewController.m */; };
 		EEC90A451D480DC500ED0292 /* MKMapView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC90A441D480DC500ED0292 /* MKMapView+Additions.m */; };
-		EEC90A491D492BA400ED0292 /* ParseUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEC90A461D492B8000ED0292 /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EEC90A4C1D49308600ED0292 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = EEC90A4B1D49308600ED0292 /* Reminder.m */; };
+		EEC90A4F1D49644300ED0292 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC90A4E1D49644300ED0292 /* ParseUI.framework */; };
+		EEC90A501D49644F00ED0292 /* ParseUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = EEC90A4E1D49644300ED0292 /* ParseUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EEF6F72E1D46823F00648043 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6F72D1D46823F00648043 /* main.m */; };
 		EEF6F7311D46823F00648043 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6F7301D46823F00648043 /* AppDelegate.m */; };
 		EEF6F7341D46823F00648043 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEF6F7331D46823F00648043 /* ViewController.m */; };
@@ -33,7 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EEC90A491D492BA400ED0292 /* ParseUI.framework in CopyFiles */,
+				EEC90A501D49644F00ED0292 /* ParseUI.framework in CopyFiles */,
 				EEF6F7501D46BDD800648043 /* Bolts.framework in CopyFiles */,
 				EEF6F7511D46BDD800648043 /* Parse.framework in CopyFiles */,
 			);
@@ -48,9 +49,9 @@
 		EEC90A401D47E03F00ED0292 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		EEC90A431D480DC500ED0292 /* MKMapView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+Additions.h"; sourceTree = "<group>"; };
 		EEC90A441D480DC500ED0292 /* MKMapView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+Additions.m"; sourceTree = "<group>"; };
-		EEC90A461D492B8000ED0292 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		EEC90A4A1D49308600ED0292 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
 		EEC90A4B1D49308600ED0292 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		EEC90A4E1D49644300ED0292 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		EEF6F7291D46823F00648043 /* locationReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = locationReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF6F72D1D46823F00648043 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EEF6F72F1D46823F00648043 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 			files = (
 				EEF6F74E1D46BDCF00648043 /* Bolts.framework in Frameworks */,
 				EEF6F74F1D46BDCF00648043 /* Parse.framework in Frameworks */,
+				EEC90A4F1D49644300ED0292 /* ParseUI.framework in Frameworks */,
 				EEF6F7441D4694E800648043 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,8 +132,8 @@
 		EEF6F7201D46823F00648043 = {
 			isa = PBXGroup;
 			children = (
+				EEC90A4E1D49644300ED0292 /* ParseUI.framework */,
 				EEF6F74C1D46BDCF00648043 /* Bolts.framework */,
-				EEC90A461D492B8000ED0292 /* ParseUI.framework */,
 				EEF6F74D1D46BDCF00648043 /* Parse.framework */,
 				EEF6F7431D4694E800648043 /* MapKit.framework */,
 				EEF6F72B1D46823F00648043 /* locationReminders */,

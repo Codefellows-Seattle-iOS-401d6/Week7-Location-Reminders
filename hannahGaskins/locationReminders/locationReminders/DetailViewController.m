@@ -11,6 +11,8 @@
 
 @interface DetailViewController ()
 - (IBAction)createReminderButtonSelected:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *radiusFieldInput;
+@property (weak, nonatomic) IBOutlet UITextField *nameFieldInput;
 
 @end
 
@@ -36,13 +38,17 @@
 - (IBAction)createReminderButtonSelected:(id)sender
 {
     NSString *reminderName = @"Test Reminder";
-    NSNumber *radius = [NSNumber numberWithFloat:100.0];
+//    NSNumber *radius = [NSNumber numberWithFloat:100.0];
+    NSString *radiusTextField = self.radiusFieldInput.text;
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc]init];
+    NSNumber *radius = [numberFormatter numberFromString:radiusTextField];
     
     Reminder *reminder = [Reminder object]; //new instance of Reminder object
     reminder.name = reminderName;
     reminder.radius = radius;
     // TODO
     reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+    
     
     // completion handler
     if (self.completion) {

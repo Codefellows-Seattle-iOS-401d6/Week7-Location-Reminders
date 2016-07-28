@@ -45,8 +45,7 @@
     [self.mapView.layer setCornerRadius:20.0];
     [self.mapView setDelegate:self];
     [self.mapView dropMultiplePins];
-    [self login];
-    
+    [self login];    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -154,7 +153,7 @@
             __weak typeof(self) weakSelf = self;
             detailViewController.completion = ^(MKCircle *circle)
             {
-                __strong typeof(self) strongSelf = self;
+                __strong typeof(weakSelf) strongSelf = self;
 
                 [strongSelf.mapView removeAnnotation:annotationView.annotation]; // removes pin
                 // pin to be replaced with circle overlay
