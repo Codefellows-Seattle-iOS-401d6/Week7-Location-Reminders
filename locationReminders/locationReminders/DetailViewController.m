@@ -31,7 +31,7 @@
 
 - (void) setup{
     _DetailViewLabel.text = [NSString stringWithFormat:@"Latitude: %f, \nLongitude: %f",self.coordinate.latitude, self.coordinate.longitude];
-    _reminderText.text = @"Reminder";
+    _reminderText.text = @"Reminder text";
     _reminderRadius.text = @"100.0";
 }
 
