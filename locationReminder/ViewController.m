@@ -30,8 +30,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
 //    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
 //    
 //    testObject[@"foo"] = @"bar";
@@ -40,14 +38,31 @@
 //        NSLog(@"Succeeded: %i, Error: %@", succeeded, error);
 //        
 //    }];
-//    
-//    PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
 //    
 //    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
 //        if (!error)
 //        {
 //            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
 //                NSLog(@"Objects: %@", objects);
+//                for (id object in objects)
+//                {
+//                    MKCircle *circle = [[MKCircle alloc]init];
+//                    
+//                    PFGeoPoint *geoPoint = object[@"location"];
+//                    MKPointAnnotation *newPoint = [[MKPointAnnotation alloc]init];
+//                    
+//                    CLLocationCoordinate2D newPointCoordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+//                    CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:newPointCoordinate radius:[object[@"radius"] doubleValue] identifier:object[@"name"]];
+//                    [[[LocationController sharedController]locationManager]startMonitoringForRegion:region];
+//                    circle = [MKCircle circleWithCenterCoordinate:newPointCoordinate radius:[object[@"radius"] doubleValue]];
+//                    
+//                    newPoint.coordinate = newPointCoordinate;
+//                    newPoint.title = object[@"name"];
+//                    [self.mapView addAnnotations:newPoint];
+//                    [self.mapView addOverlay:circle];
+//                }
 //            }];
 //        }
 //    }];
@@ -56,7 +71,8 @@
     [self.mapView.layer setCornerRadius:20.0];
     [self.mapView setDelegate:self];
     [self randomColor];
-    [self login];    
+    [self login];
+    [self setupReminders];
     
     
     CLLocationCoordinate2D pointOne;
@@ -120,6 +136,37 @@
     UIColor *random = colors[arc4random_uniform(colors.count)];
     
     return random;
+}
+
+-(void)setupReminders
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (!error)
+        {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                NSLog(@"Objects: %@", objects);
+                for (id object in objects)
+                {
+                    MKCircle *circle = [[MKCircle alloc]init];
+                    
+                    PFGeoPoint *geoPoint = object[@"location"];
+                    MKPointAnnotation *newPoint = [[MKPointAnnotation alloc]init];
+                    
+                    CLLocationCoordinate2D newPointCoordinate = CLLocationCoordinate2DMake(geoPoint.latitude, geoPoint.longitude);
+                    CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:newPointCoordinate radius:[object[@"radius"] doubleValue] identifier:object[@"name"]];
+                    [[[LocationController sharedController]locationManager]startMonitoringForRegion:region];
+                    circle = [MKCircle circleWithCenterCoordinate:newPointCoordinate radius:[object[@"radius"] doubleValue]];
+                    
+                    newPoint.coordinate = newPointCoordinate;
+                    newPoint.title = object[@"name"];
+                    [self.mapView addAnnotation:newPoint];
+                    [self.mapView addOverlay:circle];
+                }
+            }];
+        }
+    }];
 }
 
 -(void)viewWillAppear:(BOOL)animated
