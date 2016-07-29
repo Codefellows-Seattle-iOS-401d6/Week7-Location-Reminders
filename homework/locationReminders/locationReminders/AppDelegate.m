@@ -24,10 +24,18 @@
         configuration.clientKey = @"myMasterKey";
         configuration.server = @"https://location-reminders-server-sk.herokuapp.com/parse";
     }]];
-     
+    
+    [self registerForNotifications];
+    
     return YES;
 }
 
+- (void)registerForNotifications
+{
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    
+    [[UIApplication sharedApplication]registerUserNotificationSettings:settings];
+}
 
 #pragma mark - Core Data stack
 

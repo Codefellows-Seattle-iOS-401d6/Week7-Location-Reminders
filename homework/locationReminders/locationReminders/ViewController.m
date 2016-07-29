@@ -11,6 +11,7 @@
 #import "LocationController.h"
 #import "DetailViewController.h"
 #import "NumberSum.h"
+#import "Reminder.h"
 @import ParseUI;
 @import MapKit;
 
@@ -36,14 +37,23 @@
 //        NSLog(@"Succeeded: %i, Error: %@", succeeded, error);
 //    }];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
-        if (!error) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSLog(@"Objects: %@", objects);
-            }];
-        }
-    }];
+//    PFQuery *query = [PFQuery queryWithClassName:@"TestObject"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//        if (!error) {
+//            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                NSLog(@"Objects: %@", objects);
+//            }];
+//        }
+//    }];
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//        if (!error) {
+//            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                [self generateAnnotation:[objects.lastObject[@"location"] latitude] longitude:[objects.lastObject[@"location"] latitude] title:objects.lastObject[@"name"] subtitle:nil];
+//            }];
+//        }
+//    }];
     
     [self.mapView.layer setCornerRadius:20.0];
     [self.mapView setDelegate:self];
@@ -54,11 +64,29 @@
     //creating an observer for notification
 //    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(testObserverFired) name:@"TestNotification" object:nil];
 
-    NumberSum *sumNumbers = [[NumberSum alloc]init];
-    [sumNumbers returnSum:@""];
-    [sumNumbers returnSum:@"1sfkla2 rew3 dfrewq4"];
-    [sumNumbers returnSum:@"fkdjsalkjrwe"];
-    [sumNumbers returnSum:@"555"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+    __weak typeof(self) weakSelf = self;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (!error) {
+ 
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                for (Reminder *object in objects) {
+                    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(object.location.latitude, object.location.longitude);
+                    [strongSelf generateAnnotation:object.location.latitude longitude:object.location.longitude title:object.name subtitle:nil];
+                    if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+                        CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:coordinate radius:object.radius.floatValue identifier:object.name];
+                        
+                        [[[LocationController sharedController]locationManager]startMonitoringForRegion:region];
+                        
+                        MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:object.radius.floatValue];
+                        [strongSelf.mapView addOverlay:circle];
+                    }
+                }
+            }];
+        }
+    }];
+
     
 }
 
@@ -74,11 +102,8 @@
     
     [[LocationController sharedController] setDelegate:self];
     [[[LocationController sharedController]locationManager]startUpdatingLocation];
-    [self createAllStaticAnnotations];
-    for (MKPointAnnotation *newPoint in self.allLocationAnnotations) {
-        [self.mapView addAnnotation:newPoint];
-    }
- }
+}
+
 ////deallocating the observer
 //- (void)dealloc
 //{
@@ -141,19 +166,7 @@
     newPoint.coordinate = center;
     newPoint.title = title;
     newPoint.subtitle = subtitle;
-    if (!_allLocationAnnotations) {
-        _allLocationAnnotations = [[NSMutableArray alloc]init];
-    }
-    [self.allLocationAnnotations addObject:newPoint];
-}
-
-- (void)createAllStaticAnnotations
-{
-    [self generateAnnotation:47.6205 longitude:-122.3493 title:@"Space Needle" subtitle:@"Seattle"];
-    [self generateAnnotation:47.6198 longitude:-122.3528 title:@"Pacific Science Center" subtitle:@"Seattle"];
-    [self generateAnnotation:47.6221 longitude:-122.3540 title:@"Key Arena" subtitle:@"Seattle"];
-    [self generateAnnotation:47.6165 longitude:-122.3555 title:@"Olympic Sculpture Park" subtitle:@"Seattle"];
-    [self generateAnnotation:47.6194 longitude:-122.3618 title:@"Myrtle Edwards Park" subtitle:@"Seattle"];
+    [self.mapView addAnnotation:newPoint];
 }
 
 #pragma mark - LocationControllerDelegate
@@ -234,7 +247,8 @@
                 
                 __strong typeof(weakSelf) strongSelf = weakSelf;
 
-                [strongSelf.mapView removeAnnotation:annotationView.annotation];
+//                [strongSelf.mapView removeAnnotation:annotationView.annotation];
+                [strongSelf.mapView deselectAnnotation:annotationView.annotation animated:YES];
                 [strongSelf.mapView addOverlay:circle];
             };
         }

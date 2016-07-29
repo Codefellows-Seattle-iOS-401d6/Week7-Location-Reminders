@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "Reminder.h"
+#import "LocationController.h"
 
 @interface DetailViewController ()
 
@@ -52,10 +53,25 @@
     
     reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
     
-    if (self.completion) {
-        self.completion([MKCircle circleWithCenterCoordinate:self.coordinate radius:radius.floatValue]);
+    
+    //saving a PFObject to parse
+    __weak typeof(self) weakSelf = self;
+    [reminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        
+        NSLog(@"Reminder saved to Parse");
+        
+            if (strongSelf.completion) {
+                if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+                    CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:strongSelf.coordinate radius:radius.floatValue identifier:reminderName];
+                    
+                    [[[LocationController sharedController]locationManager]startMonitoringForRegion:region];
+                   
+                    strongSelf.completion([MKCircle circleWithCenterCoordinate:strongSelf.coordinate radius:radius.floatValue]);
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                }
+            }
+    }];
 }
 @end
