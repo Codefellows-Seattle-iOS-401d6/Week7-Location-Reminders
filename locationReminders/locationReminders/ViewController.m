@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 
 #import "RemindersPFLoginViewController.h"
+#import "Reminder.h"
 @import Parse;
 
 @import ParseUI;
@@ -52,18 +53,19 @@
 //        }
 //    }];
     
-    [self setup];
-    [self.mapView.layer setCornerRadius: 5.0];
-    self.mapView.showsUserLocation = YES;
+//    [self setup];
     
     if (![PFUser currentUser]) {
         [self login];
-
+        
     } else {
         [self setupAdditionalUI];
-
-    
+        
+        
     }
+    
+    [self.mapView.layer setCornerRadius: 5.0];
+    [self setupWithDataFromParse];
     
 }
 
@@ -96,6 +98,48 @@
 - (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max
 {
     return min + arc4random_uniform((uint32_t)(max - min + 1));
+}
+- (void) setupWithDataFromParse {
+        PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+    __weak typeof(self) weakSelf = self;
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if (!error){
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    __strong typeof(weakSelf) strongSelf = weakSelf;
+                    for (Reminder *reminder in objects)
+                    {
+//                        NSLog(@"Reminder: %@", reminder.name );
+                        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake( reminder.location.latitude, reminder.location.longitude);
+                        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 50.0, 50.0);
+                        MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+                        point.coordinate = coordinate;
+                        
+                        point.title = reminder.name ;
+                        [strongSelf.mapView addAnnotation:point];
+                        
+                        
+                        if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+                            CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:coordinate radius:reminder.radius.floatValue identifier:reminder.name];
+                            
+                            [[[LocationController sharedController]locationManager] startMonitoringForRegion:region];
+                            
+                            MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:reminder.radius.floatValue];
+                            
+                            [strongSelf.mapView addOverlay:circle];
+
+                            
+                        }
+
+                    }
+                    strongSelf.mapView.showsUserLocation = YES;
+
+                    [strongSelf.mapView showAnnotations:strongSelf.mapView.annotations animated:YES];
+
+                }];
+            }
+        }];
+    
+    
 }
 - (void) setup {
     NSMutableArray *annotationList = [[NSMutableArray alloc] init];
@@ -255,7 +299,7 @@
 
 }
 - (IBAction)locateButtonPressed:(id)sender {
-//    self.mapView.showsUserLocation = NO;
+    self.mapView.showsUserLocation = YES;
     [self.mapView showAnnotations:self.mapView.annotations animated:YES];
 
     NSLog(@"locate Button");
@@ -295,8 +339,11 @@
 
 - (void)locationControllerDidUpdateLocation:(CLLocation *)location{
 //    NSLog(@"update location callback");
-    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(location.coordinate, 350.0, 350.0) animated:YES];
-    
+//    [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(location.coordinate, 350.0, 350.0) animated:YES];
+//    [self.mapView showAnnotations:self.mapView.annotations animated:YES];
+//        self.mapView.showsUserLocation = YES;
+
+
   
 }
 

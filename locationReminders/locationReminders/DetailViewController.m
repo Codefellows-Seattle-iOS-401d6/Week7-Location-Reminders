@@ -44,6 +44,8 @@
     
     // get two strings from text fields
     
+
+    
     NSString *reminderName = _reminderText.text;
 
     NSNumber *radius =  [NSNumber numberWithFloat: _reminderRadius.text.floatValue == 0 ? 100.0 : _reminderRadius.text.floatValue];
@@ -54,14 +56,9 @@
     reminder.radius = radius;
     
     reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
-    
-//    if (self.completion) {
-////        self.completion([MKCircle circleWithCenterCoordinate:self.coordinate radius:radius.floatValue]);
-////        
-////        [self.navigationController popViewControllerAnimated:YES];
-//        
-//        
-//    }
+
+    reminder.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+
     
     __weak typeof(self) weakSelf = self;
     
