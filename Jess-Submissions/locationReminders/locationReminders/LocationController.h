@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @import CoreLocation;
+@import UIKit;
 
 @protocol LocationControllerDelegate <NSObject>
 

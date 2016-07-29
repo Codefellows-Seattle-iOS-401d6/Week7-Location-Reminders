@@ -74,11 +74,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mf0-wZ-R4e">
-                        <barButtonItem key="rightBarButtonItem" title="Code Challenge" id="xjG-uX-Cwt">
-                            <connections>
-                                <segue destination="oec-Zz-agC" kind="show" identifier="CodeChallengeViewController" id="qww-5b-rhu"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Code Challenge" id="xjG-uX-Cwt"/>
                     </navigationItem>
                     <connections>
                         <outlet property="firstLocationButtonSelected" destination="1fZ-yg-1rp" id="Urs-ol-lLJ"/>
@@ -96,48 +92,6 @@
                 </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1015" y="313"/>
-        </scene>
-        <!--Code Challenge View Controller-->
-        <scene sceneID="tE7-y6-tdT">
-            <objects>
-                <viewController id="oec-Zz-agC" customClass="CodeChallengeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GAW-CD-b4t"/>
-                        <viewControllerLayoutGuide type="bottom" id="xMM-1b-Day"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TuX-mL-GUs">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a string of characters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G6d-Pu-HQe">
-                                <rect key="frame" x="20" y="228" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJ5-2b-Y2r">
-                                <rect key="frame" x="230" y="388" width="142" height="30"/>
-                                <state key="normal" title="Give me my number!"/>
-                                <connections>
-                                    <action selector="submitStringButtonPressed:" destination="oec-Zz-agC" eventType="touchUpInside" id="XWA-xn-ULX"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="G6d-Pu-HQe" firstAttribute="top" secondItem="GAW-CD-b4t" secondAttribute="bottom" constant="164" id="ewr-Vl-R7I"/>
-                            <constraint firstItem="G6d-Pu-HQe" firstAttribute="leading" secondItem="TuX-mL-GUs" secondAttribute="leading" constant="20" id="gPd-l6-C3a"/>
-                            <constraint firstAttribute="trailing" secondItem="G6d-Pu-HQe" secondAttribute="trailing" constant="20" id="jt8-RV-Tcv"/>
-                            <constraint firstItem="CJ5-2b-Y2r" firstAttribute="top" secondItem="G6d-Pu-HQe" secondAttribute="bottom" constant="130" id="r8K-X4-pJV"/>
-                            <constraint firstItem="CJ5-2b-Y2r" firstAttribute="centerX" secondItem="TuX-mL-GUs" secondAttribute="centerX" constant="1" id="va9-XG-iiA"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="stringTextField" destination="G6d-Pu-HQe" id="AdY-et-hdP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1up-zg-21C" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1910" y="-343"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="79l-cx-Mwb">
@@ -168,6 +122,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="BuI-q7-YeD">
+                                <rect key="frame" x="20" y="99" width="560" height="29"/>
+                                <segments>
+                                    <segment title="Upon Entry"/>
+                                    <segment title="Upon Exit"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -175,8 +136,11 @@
                             <constraint firstItem="Cbc-Ek-kgc" firstAttribute="centerX" secondItem="dOt-zr-I8n" secondAttribute="centerX" id="7nP-xS-a3S"/>
                             <constraint firstItem="Iq6-hH-Zfz" firstAttribute="leading" secondItem="dOt-zr-I8n" secondAttribute="leading" constant="20" id="FRF-Pp-c2T"/>
                             <constraint firstItem="dxh-1m-w8i" firstAttribute="top" secondItem="nTY-Aj-ceC" secondAttribute="bottom" constant="123" id="FU8-Ss-27z"/>
+                            <constraint firstItem="dxh-1m-w8i" firstAttribute="top" secondItem="BuI-q7-YeD" secondAttribute="bottom" constant="60" id="KaT-hK-grv"/>
                             <constraint firstItem="dxh-1m-w8i" firstAttribute="leading" secondItem="dOt-zr-I8n" secondAttribute="leading" constant="20" id="as0-Cl-zdk"/>
                             <constraint firstItem="Cbc-Ek-kgc" firstAttribute="top" secondItem="nTY-Aj-ceC" secondAttribute="bottom" constant="381" id="fCY-59-DyV"/>
+                            <constraint firstAttribute="trailing" secondItem="BuI-q7-YeD" secondAttribute="trailing" constant="20" id="g38-Io-LP8"/>
+                            <constraint firstItem="BuI-q7-YeD" firstAttribute="leading" secondItem="dOt-zr-I8n" secondAttribute="leading" constant="20" id="gWJ-F0-Fd4"/>
                             <constraint firstAttribute="trailing" secondItem="Iq6-hH-Zfz" secondAttribute="trailing" constant="20" id="kAe-uK-PSK"/>
                             <constraint firstItem="Iq6-hH-Zfz" firstAttribute="top" secondItem="dxh-1m-w8i" secondAttribute="bottom" constant="55" id="xFe-DP-pxK"/>
                         </constraints>
@@ -188,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1nD-eZ-vyW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1910" y="328"/>
+            <point key="canvasLocation" x="1910" y="313"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cfb-Ef-GhF">

@@ -36,6 +36,7 @@
     [self.mapView setDelegate:self];
     [self.mapView setShowsUserLocation:YES];
     [self login];
+    [self getAllReminders];
     
     
     //demo : how to save objects
@@ -180,9 +181,11 @@
     }
 }
 
+
 - (void)locationControllerDidUpdateLocation:(CLLocation *)location
 {
     [self.mapView setRegion:MKCoordinateRegionMakeWithDistance(location.coordinate, 500.00, 500.00) animated:YES];
+    
 }
 
 #pragma mark - MapViewDelegate
@@ -206,6 +209,9 @@
     
     UIButton *rightCallOutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     annotationView.rightCalloutAccessoryView = rightCallOutButton;
+
+    UIButton *leftCallOutButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    annotationView.leftCalloutAccessoryView = leftCallOutButton;
     
     return annotationView;
     
@@ -241,7 +247,7 @@
                 __strong typeof(weakSelf) strongSelf = weakSelf;
 
                 
-                [strongSelf.mapView removeAnnotation:annotationView.annotation]; //removes pin
+//                [strongSelf.mapView removeAnnotation:annotationView.annotation]; //removes pin
                 [strongSelf.mapView addOverlay:circle]; //adds overlay
                 
             };
@@ -312,8 +318,27 @@
     [self setupAdditionalUI];
 }
 
-
-
+- (void)getAllReminders
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    
+        for (PFObject *object in objects) {
+    
+            PFGeoPoint *location = object[@"location"];
+            CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(location.latitude, location.longitude);
+            NSNumber *radius = object[@"radius"];
+            CLLocationDistance radiusDistance = radius.floatValue;
+            
+            CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:coordinate radius:radiusDistance identifier:object[@"name"]];
+            [[[LocationController sharedController]locationManager]startMonitoringForRegion:region];
+            
+            
+            MKCircle *circle = [MKCircle circleWithCenterCoordinate:coordinate radius:radiusDistance];
+            [self.mapView addOverlay:circle];
+        }
+    }];
+}
 
 
 
