@@ -51,8 +51,20 @@
 {
     [self.delegate locationControllerDidUpdateLocation:locations.lastObject];
     [self setLocation:locations.lastObject];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
+{
+    NSLog(@"User did enter region");
     
+    // create uilocalNotification object
+    UILocalNotification *notification = [[UILocalNotification alloc]init];
     
+    // TODO
+    notification.alertTitle = @"you have entered the matrix... the red pill";
+    notification.alertBody = @"the poké💉Go matrix...";
+    
+    [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
 }
 
 @end

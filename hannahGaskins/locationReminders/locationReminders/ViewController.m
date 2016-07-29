@@ -58,6 +58,29 @@
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(testObserverFired) name:@"TestNotification" object:nil];
+    
+    __weak typeof(self) weakSelf = self;
+    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        if (!error) {
+            NSLog(@"Success in retrieving %lu objects", objects.count);
+            
+            for (Reminder *reminder in objects) {
+                NSLog(@"%@", reminder.objectId);
+                CLLocationCoordinate2D center = CLLocationCoordinate2DMake(reminder.location.latitude, reminder.location.longitude);
+                if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+                    CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:center radius:reminder.radius.floatValue identifier:reminder.name];
+                    [[[LocationController sharedController]locationManager]startMonitoringForRegion:region];
+                    MKCircle *circle = [MKCircle circleWithCenterCoordinate:center radius:reminder.radius.floatValue];
+                    [strongSelf.mapView addOverlay:circle];
+                }
+            }
+        }  else {
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+
 }
 
 - (void)dealloc

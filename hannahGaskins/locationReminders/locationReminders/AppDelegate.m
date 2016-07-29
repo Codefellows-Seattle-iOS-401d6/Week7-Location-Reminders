@@ -12,6 +12,8 @@
 
 @interface AppDelegate ()
 
+@property (strong, nonatomic) NSArray *array;
+
 @end
 
 @implementation AppDelegate
@@ -26,8 +28,19 @@
         configuration.server = @"https://hg-location-reminders-server.herokuapp.com/parse";
     }]];
     
+    [self registerForNotification];
+    
     return YES;
 }
 
+
+- (void)registerForNotification
+{
+    // instance of uinotification settings
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    
+    [[UIApplication sharedApplication]registerUserNotificationSettings:settings];
+    
+}
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "Reminder.h"
+#import "LocationController.h"
 
 @interface DetailViewController ()
 - (IBAction)createReminderButtonSelected:(id)sender;
@@ -26,6 +27,7 @@
     NSLog(@"Coordinate: %f, %f", self.coordinate.latitude, self.coordinate.longitude);
 
     [[NSNotificationCenter defaultCenter]postNotificationName:@"TestNotification" object:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,8 +39,7 @@
 
 - (IBAction)createReminderButtonSelected:(id)sender
 {
-    NSString *reminderName = @"Test Reminder";
-//    NSNumber *radius = [NSNumber numberWithFloat:100.0];
+    NSString *reminderName = self.nameFieldInput.text;
     NSString *radiusTextField = self.radiusFieldInput.text;
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc]init];
     NSNumber *radius = [numberFormatter numberFromString:radiusTextField];
@@ -48,13 +49,29 @@
     reminder.radius = radius;
     // TODO
     reminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
-    
-    
-    // completion handler
-    if (self.completion) {
-        self.completion([MKCircle circleWithCenterCoordinate:self.coordinate radius:radius.floatValue]);
-        // ass soon as we create this and our completion gets calls, it will dismiss our VC
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+        
+        __weak typeof(self) weakSelf = self;
+        
+        [reminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            NSLog(@"Reminder saved to our Parse server");
+            
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+            
+            // completion handler
+            if (strongSelf.completion) {
+                
+                if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+                    CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:strongSelf.coordinate radius:radius.floatValue identifier:reminderName];
+                                                
+                    [[[LocationController sharedController]locationManager]startMonitoringForRegion:region];
+                    strongSelf.completion([MKCircle circleWithCenterCoordinate:strongSelf.coordinate radius:radius.floatValue]);
+                    
+                    [strongSelf.navigationController popViewControllerAnimated:YES];
+                    
+                }
+                
+            }
+            
+        }];
 }
 @end

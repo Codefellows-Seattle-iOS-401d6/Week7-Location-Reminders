@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import UIKit;
 @import CoreLocation;
 
 // Delegation pattern: delegate protocol needs to be weak. On ViewController
